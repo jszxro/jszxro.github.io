@@ -230,22 +230,6 @@
         color: #333;
       }
 
-      .skill-bar {
-        width: 100%;
-        height: 10px;
-        background-color: #f0f0f0;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
-      }
-
-      .skill-level {
-        height: 100%;
-        border-radius: 30px;
-        background: linear-gradient(90deg, #f18c8e, #f9b4ab, #f18c8e);
-        transition: width 0.5s ease-in-out;
-      }
-
       .skill-desc {
         font-size: 12px;
         color: #666;
@@ -414,6 +398,7 @@
       }
     </style>
   </head>
+
   <body>
     <aside class="sidebar">
       <img src="image/profile.jpg" alt="프로필 사진" />
@@ -450,17 +435,6 @@
         <h2 class="section-title">이력</h2>
         <div class="grid-boxes">
           <div class="grid-box">
-            <div class="box-title">디지털 새싹 프로그램</div>
-            <div class="box-subinfo">동아대학교 산학협력단 | 2025.08~</div>
-            <div class="box-content">
-              <ul>
-                <li>인공지능정부연구소 연구원</li>
-                <li>사업진행 관련 전산 처리</li>
-                <li>인공지능 모델 개발</li>
-              </ul>
-            </div>
-          </div>
-          <div class="grid-box">
             <div class="box-title">빅데이터를 활용한 자바 개발자</div>
             <div class="box-subinfo">
               부경대학교 | 2025.02 - 2025.07(960시간)
@@ -494,6 +468,20 @@
                     class="project-link"
                   >
                     🔗 [안밤] GitHub
+                  </a>
+                </li>
+                 <br />
+                <li>
+                  감정 기반 음악 추천 서비스, <strong>Moodlog</strong><br />
+                  <span class="stack-text">
+                    <strong>Stack</strong>: Java, Spring Boot, Oracle, React, Vite, Axios, JWT, Figma, Docker
+                  </span><br />
+                  <a
+                    href="https://github.com/jszxro/PK_project_4"
+                    target="_blank"
+                    class="project-link"
+                  >
+                    🔗 [Moodlog] GitHub
                   </a>
                 </li>
               </ol>
@@ -539,80 +527,60 @@
         </div>
       </section>
       <section class="two-column-section">
-        <div class="column">
-          <h2 class="section-title">Skill</h2>
-          <div class="box">
-            <div class="skill">
-              <span class="skill-name">Python</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 75%"></div>
-              </div>
-              <p class="skill-desc">
-                데이터 전처리 자동화, 데이터 분석, 모델링에 주로 사용합니다.
-              </p>
-              <p class="skill-desc">
-                함수로 분리하여 재사용 가능한 코드 작성을 지향합니다.
-              </p>
-            </div>
-            <div class="skill">
-              <span class="skill-name">Django</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 60%"></div>
-              </div>
-              <p class="skill-desc">
-                웹 서비스 백엔드를 구현하며 데이터베이스 연동과 화면 구성까지의
-                웹 개발 흐름을 익혔습니다.
-              </p>
-            </div>
-            <div class="skill">
-              <span class="skill-name">Java</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 38%"></div>
-              </div>
-              <p class="skill-desc">
-                Spring 기반 프로젝트로 객체지향 설계를 익히는 중이며, 코드를
-                구조적으로 짜는 연습을 꾸준히 이어가고 있습니다.
-              </p>
-            </div>
-            <div class="skill">
-              <span class="skill-name">Spring Boot</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 51%"></div>
-              </div>
-              <p class="skill-desc">
-                백엔드 REST API 개발에 활용하고 있으며, MVC 구조를 이해하고
-                Controller/Service/Repository를 직접 설계했습니다.
-              </p>
-            </div>
-            <div class="skill">
-              <span class="skill-name">React</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 52%"></div>
-              </div>
-              <p class="skill-desc">
-                디자인과 기능의 균형을 항상 의식하며 작업합니다.
-              </p>
-            </div>
-            <div class="skill">
-              <span class="skill-name">SQL (Oracle)</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 60%"></div>
-              </div>
-              <p class="skill-desc">
-                Oracle 기반 데이터 모델링, 서브쿼리 작성 경험이 있습니다.
-              </p>
-            </div>
-            <div class="skill">
-              <span class="skill-name">Git / Docker</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 62%"></div>
-              </div>
-              <p class="skill-desc">
-                git을 활용하여 프로젝트를 관리하며, 커밋 관리를 중요하게
-                생각합니다.
-              </p>
-            </div>
-          </div>
+  <div class="column">
+    <h2 class="section-title">Skill</h2>
+    <div class="box">
+      <div class="skill">
+        <span class="skill-name">Python</span>
+        <p class="skill-desc">
+          데이터 전처리 자동화, 데이터 분석, 모델링에 주로 사용합니다.
+        </p>
+        <p class="skill-desc">
+          함수로 분리하여 재사용 가능한 코드 작성을 지향합니다.
+        </p>
+      </div>
+      <div class="skill">
+        <span class="skill-name">Django</span>
+        <p class="skill-desc">
+          웹 서비스 백엔드를 구현하며 데이터베이스 연동과 화면 구성까지의
+          웹 개발 흐름을 익혔습니다.
+        </p>
+      </div>
+      <div class="skill">
+        <span class="skill-name">Java</span>
+        <p class="skill-desc">
+          Spring 기반 프로젝트로 객체지향 설계를 익히는 중이며, 코드를
+          구조적으로 짜는 연습을 꾸준히 이어가고 있습니다.
+        </p>
+      </div>
+      <div class="skill">
+        <span class="skill-name">Spring Boot</span>
+        <p class="skill-desc">
+          Spring Boot 기반 REST API를 직접 설계하고 구현한 경험이 있습니다.<br />
+          MVC 구조에 따라 Controller, Service, Repository를 분리하여 개발했습니다.
+        </p>
+      </div>
+      <div class="skill">
+        <span class="skill-name">React</span>
+        <p class="skill-desc">
+          디자인과 기능의 균형을 항상 의식하며 작업합니다.
+        </p>
+      </div>
+      <div class="skill">
+        <span class="skill-name">SQL (Oracle)</span>
+        <p class="skill-desc">
+          Oracle 기반 데이터 모델링, 서브쿼리 작성 경험이 있습니다.
+        </p>
+      </div>
+      <div class="skill">
+        <span class="skill-name">Git / Docker</span>
+        <p class="skill-desc">
+          git을 활용하여 프로젝트를 관리하며, 커밋 관리를 중요하게
+          생각합니다.
+        </p>
+      </div>
+    </div>
+  </div>
         </div>
         <div class="column">
           <h2 class="section-title">Achievements</h2>
@@ -654,12 +622,40 @@
       <section class="project-section">
         <h2 class="section-title">Projects</h2>
         <div class="box">
+          <!-- 프로젝트 0 -->
+        <div class="project-item">
+          <h3 class="project-title">감정 기반 음악 추천 서비스, Moodlog</h3>
+          <div class="project-sub">2025.07.10 ~ 2025.07.29 | 팀 프로젝트</div>
+          <div class="project-tech">
+            Stack: React · Spring Boot · Oracle · JWT · Axios · Figma · Docker
+          </div>
+          <div class="project-image">
+            <img src="image/moodlog.gif" alt="Moodlog 프로젝트 시연" />
+          </div>
+          <p class="project-desc">
+            사용자의 감정을 기반으로 음악을 추천하고, 감정 일기 및 커뮤니티 기능을 제공하는 감성 중심 웹서비스입니다.
+          </p>
+          <ul class="project-feature">
+            <li>기분 선택 시 감정 기반 추천 음악 플레이리스트 제공</li>
+            <li>감정을 기록할 수 있는 일기 작성 기능 및 감정 캘린더</li>
+            <li>추천 음악과 감정 공유가 가능한 Moments 게시판 구현</li>
+            <li>회원가입, 로그인, 프로필 수정 등 사용자 인증 및 관리 기능</li>
+          </ul>
+          <p class="project-role">
+            <strong>역할:</strong> 프로젝트 기획 및 전체 흐름 설계, Figma 기반 전체 UI 설계, 백엔드 API 설계 및 연동 <br />
+          </p>
+          <p class="project-link">
+            <a href="https://github.com/jszxro/moodlog" target="_blank">
+              🔗 [Moodlog] GitHub 바로가기
+            </a>
+          </p>
+        </div>
           <!-- 프로젝트 1 -->
           <div class="project-item">
             <h3 class="project-title">부산시 밤길 안전 서비스, 안밤</h3>
             <div class="project-sub">2025.06.13 - 2025.06.25 | 팀 프로젝트</div>
             <div class="project-tech">
-              Stack: Java · Spring Boot · React · Oracle · JWT · Kakao Map API
+              Stack: Java · Spring Boot · React · Oracle · JWT · Kakao Map API · Docker
             </div>
 
             <div class="project-image">
@@ -683,7 +679,6 @@
               <a href="https://github.com/sumin020415/project_2" target="_blank"
                 >🔗 [안밤] GitHub 바로가기</a
               >
-            </p>
           </div>
           <!-- 프로젝트 2 -->
           <div class="project-item">
@@ -755,8 +750,8 @@
             </ul>
 
             <p class="project-role">
-              <strong>역할:</strong> 사용자 요구사항 분석, 서비스 기획안 및
-              모델링 문서 작성, ERD 설계
+              <strong>역할:</strong> 사용자 요구사항 및 데이터 분석, 서비스 기획안 및
+              모델링 문서 작성, UI 디자인
             </p>
 
             <p class="project-link">
@@ -767,6 +762,5 @@
           </div>
         </div>
       </section>
-    </main>
   </body>
 </html>
