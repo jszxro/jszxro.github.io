@@ -3,29 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>young's Portfolio</title>
+    <title>정서영 Portfolio</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <style>
+      /* ========================
+         Design Tokens
+      ======================== */
+      :root {
+        --bg: #f7f8fa; /* 페이지 배경 */
+        --card: #ffffff; /* 카드 배경 */
+        --text: #1f2937; /* 본문 텍스트 */
+        --muted: #6b7280; /* 보조 텍스트 */
+        --line: #e5e7eb; /* 구분선 */
+        --accent: #bd6178; /* 포인트 컬러 */
+        --accent-soft: #ffeef3; /* 포인트의 연한 배경 */
+        --shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+
+        --radius-xl: 20px;
+        --radius-md: 12px;
+
+        --content-max: 1040px; /* 본문 최대 가로폭 */
+        --sidebar-w: 280px; /* 사이드바 너비 */
+      }
+
+      /* ========================
+         Base
+      ======================== */
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
+
       body {
         display: flex;
         font-family: "Noto Sans KR", sans-serif;
-        background-color: #fcf3f3;
-        color: #333;
+        background: var(--bg);
+        color: var(--text);
         min-height: 100vh;
       }
+
+      /* ========================
+         Sidebar
+      ======================== */
       .sidebar {
-        width: 280px;
-        background-color: white;
+        width: var(--sidebar-w);
+        background: var(--card);
         padding: 40px 20px;
-        border-right: 1px solid #eee;
+        border-right: 1px solid var(--line);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -45,27 +73,20 @@
       }
       .sidebar p {
         font-size: 14px;
-        color: #666;
+        color: var(--muted);
         text-align: center;
         margin-bottom: 12px;
       }
       .sidebar a {
-        color: #666;
+        color: var(--accent);
         text-decoration: none;
         font-size: 14px;
       }
-      .content {
-        margin-left: 280px;
-        padding: 60px 40px;
-        width: calc(100% - 280px);
-      }
-
       .contact-links {
         margin-top: 30px;
         text-align: center;
-        color: #777;
+        color: var(--muted);
       }
-
       .contact-links h3 {
         font-size: 16px;
         font-weight: 600;
@@ -75,121 +96,123 @@
         gap: 6px;
         justify-content: center;
       }
-
       .contact-links ul {
         list-style: none;
-        padding: 0;
-        margin: 0;
       }
-
       .contact-links li {
         margin-bottom: 8px;
       }
-
       .contact-links a {
-        font-size: 14px;
-        color: #333;
-        text-decoration: none;
         display: inline-flex;
         align-items: center;
         gap: 4px;
       }
-
       .contact-links a:hover {
         text-decoration: underline;
+      }
+
+      /* ========================
+         Content
+      ======================== */
+      .content {
+        margin-left: var(--sidebar-w);
+        padding: 72px 64px;
+        width: calc(100% - var(--sidebar-w));
+        max-width: calc(var(--content-max) + var(--sidebar-w));
       }
 
       section {
         margin-bottom: 80px;
       }
-      section h2.section-title {
+
+      /* 섹션 타이틀: 깔끔하게 */
+      .section-title {
         font-size: 28px;
+        font-weight: 700;
+        border: none;
+        padding: 0;
         margin-bottom: 16px;
-        border-bottom: 1px solid #7a7a7a60;
-        padding-bottom: 8px;
+      }
+      /* 타이틀 하단에 얇은 보조선 + 상단 여백 */
+      .section-title + .box,
+      .section-title + .grid-boxes,
+      .section-title + .project-item,
+      .section-title + .two-column-section {
+        border-top: 1px solid var(--line);
+        padding-top: 20px;
       }
 
+      /* ========================
+         Cards / Boxes
+      ======================== */
       .box {
-        background-color: #ffffff;
+        background: var(--card);
         padding: 24px;
-        border-radius: 20px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
       }
 
+      /* 2열 정보 섹션 */
       .two-column-section {
         display: flex;
         gap: 32px;
-        align-items: stretch; /* 양쪽 박스 높이를 자동으로 맞춤 */
-        justify-content: space-between; /* 양쪽 정렬 */
-        flex-wrap: wrap; /* 반응형 대응 */
+        align-items: stretch;
+        justify-content: space-between;
+        flex-wrap: wrap;
       }
-
       .two-column-section .column {
+        flex: 1;
+        min-width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .two-column-section .box {
         flex: 1;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
       }
 
-      .two-column-section .box {
-        flex: 1; /* 이거 추가: box가 column 높이만큼 채우도록 */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* 필요시 내부 정렬에도 도움됨 */
-      }
-
-      .section-title {
-        font-size: 24px;
-        font-weight: bold;
-        border-bottom: 2px solid #c6c6c6;
-        margin-bottom: 16px;
-      }
-
+      /* Grid boxes (이력 카드들) */
       .grid-boxes {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 24px;
       }
-
       .grid-box {
-        background-color: #ffffff;
+        background: var(--card);
         padding: 24px;
-        border-radius: 20px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
         display: flex;
         flex-direction: column;
-        align-items: flex-start; /* 내용은 왼쪽 정렬 */
+        align-items: flex-start;
         justify-content: flex-start;
         min-height: 220px;
       }
 
       .box-title {
-        font-weight: bold;
+        font-weight: 700;
         font-size: 18px;
         margin-bottom: 6px;
       }
-
-      .box-content ul {
+      .box-subinfo {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+      .box-content ul,
+      .box-content ol {
         padding-left: 20px;
         margin: 0;
-        list-style: disc;
       }
-
       .box-content li {
         margin-bottom: 6px;
         font-size: 15px;
         line-height: 1.6;
-      }
-
-      .box-content ol {
-        margin-bottom: 6px;
-        font-size: 15px;
-        line-height: 1.6;
-      }
-
-      .box-subinfo {
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 16px;
       }
 
       .project-list {
@@ -197,42 +220,36 @@
         line-height: 1.6;
         padding-left: 20px;
       }
-
       .stack-text {
         font-size: 12.5px;
         color: #555;
-        /* margin-left: 1rem; */
       }
-
       .highlight {
-        color: #bd6178;
-        font-weight: bold;
+        color: var(--accent);
+        font-weight: 700;
       }
 
       .project-link {
         text-decoration: none;
-        color: #333;
+        color: var(--accent);
         font-size: 13px;
       }
       .project-link:hover {
         text-decoration: underline;
-        color: #bd6178;
       }
 
       .skill {
         margin-bottom: 18px;
       }
-
       .skill-name {
         font-size: 15px;
         font-weight: 600;
         margin-bottom: 6px;
-        color: #333;
+        color: var(--text);
       }
-
       .skill-desc {
         font-size: 12px;
-        color: #666;
+        color: var(--muted);
         margin-top: 2px;
         line-height: 1.4;
       }
@@ -240,113 +257,121 @@
       .info-item {
         margin-bottom: 12px;
       }
-
       .info-main {
         font-weight: 500;
-        color: #333;
+        color: var(--text);
       }
-
       .info-title {
         color: #4b4b4b;
         margin-bottom: 20px;
       }
-
       .info-sub {
         font-size: 14px;
-        color: #888;
+        color: var(--muted);
       }
-
       .info-section {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(--line);
         padding-bottom: 15px;
         margin-bottom: 15px;
       }
-
       .info-section:last-child {
         border-bottom: none;
       }
 
       .project-image img {
         max-width: 100%;
-        border-radius: 12px;
+        border-radius: var(--radius-md);
         margin: 16px 0;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       }
 
+      /* ========================
+         Projects
+      ======================== */
       .project-section {
         margin-top: 60px;
       }
 
+      /* 래퍼 .box를 그리드 컨테이너로 바꿉니다(2열) */
+      .project-section > .box {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        gap: 24px;
+        border: none; /* 래퍼 외곽선/그림자 제거 */
+        box-shadow: none;
+        padding: 0;
+        background: transparent;
+      }
+
       .project-item {
-        margin-bottom: 40px;
+        margin: 0;
         padding: 24px;
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        background-color: #fff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: var(--card);
+        box-shadow: var(--shadow);
       }
 
       .project-title {
         font-size: 22px;
-        font-weight: bold;
+        font-weight: 700;
         margin-bottom: 6px;
-        color: #333;
+        color: var(--text);
       }
-
       .project-sub {
         font-size: 14px;
-        color: #777;
+        color: var(--muted);
         margin-bottom: 12px;
       }
-
       .project-sub1 {
         font-size: 10px;
-        color: #777;
+        color: var(--muted);
         margin-bottom: 10px;
       }
 
       .project-tech {
         font-size: 14px;
-        color: #555;
-        font-style: italic;
-        margin-bottom: 16px;
+        color: var(--muted);
+        font-style: normal;
+        margin-bottom: 12px;
       }
 
       .project-image {
-        margin-bottom: 16px;
+        margin-bottom: 12px;
         text-align: left;
       }
-
       .project-image img {
-        width: 100%; /* 부모 영역 너비에 맞춤 */
+        width: 100%;
         max-width: 700px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      }
-
-      .project-image img.screenshot {
-        max-width: 90%;
-        height: auto;
-        display: block;
       }
 
       .project-desc {
         font-size: 16px;
         color: #444;
         line-height: 1.6;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
       }
-
       .project-feature {
-        margin-bottom: 16px;
+        margin-bottom: 12px;
         padding-left: 20px;
       }
-
       .project-feature li {
         font-size: 15px;
         margin-bottom: 6px;
         list-style-type: disc;
-        color: #333;
+        color: var(--text);
+      }
+
+      .project-image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin: 12px 0;
+      }
+      .project-image-grid img {
+        width: 100%;
+        border-radius: var(--radius-md);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       }
 
       .project-role {
@@ -355,30 +380,56 @@
         color: #444;
       }
 
-      .project-link a {
-        font-size: 14px;
-        text-decoration: none;
-        color: #c76c8f;
-        font-weight: 500;
-        border-bottom: 1px solid transparent;
-        transition: all 0.2s ease;
+      /* 기술 스택 태그(조약돌) */
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 10px 0 12px;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 12px;
+        font-size: 13px;
+        line-height: 1;
+        color: #444; /* 글자색 */
+        background: #ffeef3; /* 기본 핑크 배경 */
+        border: 1px solid #ffeef3; /* 테두리도 핑크 */
+        border-radius: 999px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        user-select: none;
+        transition: none; /* 호버 애니메이션 제거 */
       }
 
-      .project-link a:hover {
-        border-bottom: 1px solid #c76c8f;
+      /* .tag:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        background: #fff7fa;
+      }
+      .tag--accent {
+        background: var(--accent-soft);
+        border-color: #f4c9d7;
+        color: #b2576f;
+      } */
+      .tag--sm {
+        padding: 5px 10px;
+        font-size: 12px;
       }
 
-      @media screen and (max-width: 768px) {
+      /* ========================
+         Responsive
+      ======================== */
+      @media (max-width: 768px) {
         body {
           flex-direction: column;
         }
         .sidebar {
           width: 100%;
-          flex-direction: column;
           height: auto;
           position: relative;
           border-right: none;
-          border-bottom: 1px solid #eee;
+          border-bottom: 1px solid var(--line);
           flex-wrap: wrap;
           justify-content: center;
           align-items: center;
@@ -395,6 +446,12 @@
           width: 100%;
           padding: 30px 20px;
         }
+        .two-column-section .column {
+          min-width: 100%;
+        }
+        .project-section > .box {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -403,10 +460,7 @@
     <aside class="sidebar">
       <img src="image/profile.jpg" alt="프로필 사진" />
       <h2>정서영</h2>
-      <p>
-        데이터는 세상을 움직이는<br />
-        열쇠라고 믿습니다.
-      </p>
+      <p>데이터는 세상을 움직이는<br />열쇠라고 믿습니다.</p>
       <div class="contact-links">
         <h3>📬 Social</h3>
         <ul>
@@ -417,6 +471,7 @@
         </ul>
       </div>
     </aside>
+
     <main class="content">
       <section id="about">
         <h2 class="section-title">ABOUT ME</h2>
@@ -443,50 +498,49 @@
               <ol class="project-list">
                 <li>
                   도서 관리 시스템, <strong>북적북적</strong><br />
-                  <span class="stack-text">
-                    <strong>Stack</strong>: Python, Oracle, Docker, Figma,
-                    DBeaver </span
+                  <span class="stack-text"
+                    ><strong>Stack</strong>: Python, Oracle, Docker, Figma,
+                    DBeaver</span
                   ><br />
                   <a
                     href="https://github.com/jszxro/PK_miniproject_3"
                     target="_blank"
                     class="project-link"
+                    >🔗 [북적북적] GitHub</a
                   >
-                    🔗 [북적북적] GitHub
-                  </a>
                 </li>
                 <br />
                 <li>
                   부산시 밤길 안전 서비스, <strong>안밤</strong><br />
-                  <span class="stack-text">
-                    <strong>Stack</strong>: Java, Spring Boot, Oracle, Docker,
-                    React, Axios, Vite, Figma </span
+                  <span class="stack-text"
+                    ><strong>Stack</strong>: Java, Spring Boot, Oracle, Docker,
+                    React, Axios, Vite, Figma</span
                   ><br />
                   <a
                     href="https://github.com/sumin020415/project_2"
                     target="_blank"
                     class="project-link"
+                    >🔗 [안밤] GitHub</a
                   >
-                    🔗 [안밤] GitHub
-                  </a>
                 </li>
-                 <br />
+                <br />
                 <li>
                   감정 기반 음악 추천 서비스, <strong>Moodlog</strong><br />
-                  <span class="stack-text">
-                    <strong>Stack</strong>: Java, Spring Boot, Oracle, React, Vite, Axios, JWT, Figma, Docker
-                  </span><br />
+                  <span class="stack-text"
+                    ><strong>Stack</strong>: Java, Spring Boot, Oracle, React,
+                    Vite, Axios, JWT, Figma, Docker</span
+                  ><br />
                   <a
                     href="https://github.com/jszxro/PK_project_4"
                     target="_blank"
                     class="project-link"
+                    >🔗 [Moodlog] GitHub</a
                   >
-                    🔗 [Moodlog] GitHub
-                  </a>
                 </li>
               </ol>
             </div>
           </div>
+
           <div class="grid-box">
             <div class="box-title">학부 연구생</div>
             <div class="box-subinfo">
@@ -499,6 +553,7 @@
               </ul>
             </div>
           </div>
+
           <div class="grid-box">
             <div class="box-title">디지털 스마트 부산 아카데미(DSBA)</div>
             <div class="box-subinfo">
@@ -509,79 +564,80 @@
                 <li>
                   소상공인을 위한 상권 추천 프로젝트, <strong>상추</strong
                   ><br />
-                  <span class="stack-text">
-                    <strong>Stack</strong>: python, pandas, matplotlib, numpy,
-                    tensorflow, django, vanilla js </span
+                  <span class="stack-text"
+                    ><strong>Stack</strong>: python, pandas, matplotlib, numpy,
+                    tensorflow, django, vanilla js</span
                   ><br />
                   <a
                     href="https://github.com/offensivesoup/Sangchu_Final_PJT"
                     target="_blank"
                     class="project-link"
+                    >🔗 [상추] GitHub</a
                   >
-                    🔗 [상추] GitHub
-                  </a>
                 </li>
               </ol>
             </div>
           </div>
         </div>
       </section>
+
       <section class="two-column-section">
-  <div class="column">
-    <h2 class="section-title">Skill</h2>
-    <div class="box">
-      <div class="skill">
-        <span class="skill-name">Python</span>
-        <p class="skill-desc">
-          데이터 전처리 자동화, 데이터 분석, 모델링에 주로 사용합니다.
-        </p>
-        <p class="skill-desc">
-          함수로 분리하여 재사용 가능한 코드 작성을 지향합니다.
-        </p>
-      </div>
-      <div class="skill">
-        <span class="skill-name">Django</span>
-        <p class="skill-desc">
-          웹 서비스 백엔드를 구현하며 데이터베이스 연동과 화면 구성까지의
-          웹 개발 흐름을 익혔습니다.
-        </p>
-      </div>
-      <div class="skill">
-        <span class="skill-name">Java</span>
-        <p class="skill-desc">
-          Spring 기반 프로젝트로 객체지향 설계를 익히는 중이며, 코드를
-          구조적으로 짜는 연습을 꾸준히 이어가고 있습니다.
-        </p>
-      </div>
-      <div class="skill">
-        <span class="skill-name">Spring Boot</span>
-        <p class="skill-desc">
-          Spring Boot 기반 REST API를 직접 설계하고 구현한 경험이 있습니다.<br />
-          MVC 구조에 따라 Controller, Service, Repository를 분리하여 개발했습니다.
-        </p>
-      </div>
-      <div class="skill">
-        <span class="skill-name">React</span>
-        <p class="skill-desc">
-          디자인과 기능의 균형을 항상 의식하며 작업합니다.
-        </p>
-      </div>
-      <div class="skill">
-        <span class="skill-name">SQL (Oracle)</span>
-        <p class="skill-desc">
-          Oracle 기반 데이터 모델링, 서브쿼리 작성 경험이 있습니다.
-        </p>
-      </div>
-      <div class="skill">
-        <span class="skill-name">Git / Docker</span>
-        <p class="skill-desc">
-          git을 활용하여 프로젝트를 관리하며, 커밋 관리를 중요하게
-          생각합니다.
-        </p>
-      </div>
-    </div>
-  </div>
+        <div class="column">
+          <h2 class="section-title">Skill</h2>
+          <div class="box">
+            <div class="skill">
+              <span class="skill-name">Python</span>
+              <p class="skill-desc">
+                데이터 전처리 자동화, 데이터 분석, 모델링에 주로 사용합니다.
+              </p>
+              <p class="skill-desc">
+                함수로 분리하여 재사용 가능한 코드 작성을 지향합니다.
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-name">Django</span>
+              <p class="skill-desc">
+                웹 서비스 백엔드를 구현하며 데이터베이스 연동과 화면 구성까지의
+                웹 개발 흐름을 익혔습니다.
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-name">Java</span>
+              <p class="skill-desc">
+                Spring 기반 프로젝트로 객체지향 설계를 익히는 중이며, 코드를
+                구조적으로 짜는 연습을 꾸준히 이어가고 있습니다.
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-name">Spring Boot</span>
+              <p class="skill-desc">
+                Spring Boot 기반 REST API를 직접 설계하고 구현한 경험이
+                있습니다. MVC 구조에 따라 Controller, Service, Repository를
+                분리하여 개발했습니다.
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-name">React</span>
+              <p class="skill-desc">
+                디자인과 기능의 균형을 항상 의식하며 작업합니다.
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-name">SQL (Oracle)</span>
+              <p class="skill-desc">
+                Oracle 기반 데이터 모델링, 서브쿼리 작성 경험이 있습니다.
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-name">Git / Docker</span>
+              <p class="skill-desc">
+                git을 활용하여 프로젝트를 관리하며, 커밋 관리를 중요하게
+                생각합니다.
+              </p>
+            </div>
+          </div>
         </div>
+
         <div class="column">
           <h2 class="section-title">Achievements</h2>
           <div class="box">
@@ -619,49 +675,69 @@
           </div>
         </div>
       </section>
+
       <section class="project-section">
         <h2 class="section-title">Projects</h2>
+
         <div class="box">
           <!-- 프로젝트 0 -->
-        <div class="project-item">
-          <h3 class="project-title">감정 기반 음악 추천 서비스, Moodlog</h3>
-          <div class="project-sub">2025.07.10 ~ 2025.07.29 | 팀 프로젝트</div>
-          <div class="project-tech">
-            Stack: React · Spring Boot · Oracle · JWT · Axios · Figma · Docker
+          <div class="project-item">
+            <h3 class="project-title">감정 기반 음악 추천 서비스, Moodlog</h3>
+            <div class="project-sub">2025.07.10 ~ 2025.07.29 | 팀 프로젝트</div>
+            <div class="project-tech">
+              <div class="tech-tags">
+                <span class="tag">React</span>
+                <span class="tag">Spring Boot</span>
+                <span class="tag">Oracle</span>
+                <span class="tag">JWT</span>
+                <span class="tag">Axios</span>
+                <span class="tag">Figma</span>
+                <span class="tag">Docker</span>
+              </div>
+            </div>
+            <div class="project-image">
+              <img src="image/moodlog.GIF" alt="Moodlog 프로젝트 시연" />
+            </div>
+            <p class="project-desc">
+              감정을 기반으로 음악을 추천하고, 감정 일기 및 커뮤니티 기능을
+              제공하는 감성 중심 웹서비스
+            </p>
+            <ul class="project-feature">
+              <li>기분 선택 시 감정 기반 추천 음악 플레이리스트 제공</li>
+              <li>감정을 기록할 수 있는 일기 작성 기능 및 감정 캘린더</li>
+              <li>추천 음악과 감정 공유가 가능한 Moments 게시판 구현</li>
+              <li>회원가입, 로그인, 프로필 수정 등 사용자 인증 및 관리 기능</li>
+            </ul>
+            <p class="project-role">
+              <strong>역할:</strong> 프로젝트 기획 및 전체 흐름 설계, Figma 기반
+              전체 UI 설계, 백엔드 API 설계 및 연동
+            </p>
+            <p class="project-link">
+              <a href="https://github.com/jszxro/moodlog" target="_blank"
+                >🔗 [Moodlog] GitHub 바로가기</a
+              >
+            </p>
           </div>
-          <div class="project-image">
-            <img src="image/moodlog.GIF" alt="Moodlog 프로젝트 시연" />
-          </div>
-          <p class="project-desc">
-            감정을 기반으로 음악을 추천하고, 감정 일기 및 커뮤니티 기능을 제공하는 감성 중심 웹서비스입니다.
-          </p>
-          <ul class="project-feature">
-            <li>기분 선택 시 감정 기반 추천 음악 플레이리스트 제공</li>
-            <li>감정을 기록할 수 있는 일기 작성 기능 및 감정 캘린더</li>
-            <li>추천 음악과 감정 공유가 가능한 Moments 게시판 구현</li>
-            <li>회원가입, 로그인, 프로필 수정 등 사용자 인증 및 관리 기능</li>
-          </ul>
-          <p class="project-role">
-            <strong>역할:</strong> 프로젝트 기획 및 전체 흐름 설계, Figma 기반 전체 UI 설계, 백엔드 API 설계 및 연동 <br />
-          </p>
-          <p class="project-link">
-            <a href="https://github.com/jszxro/moodlog" target="_blank">
-              🔗 [Moodlog] GitHub 바로가기
-            </a>
-          </p>
-        </div>
+
           <!-- 프로젝트 1 -->
           <div class="project-item">
             <h3 class="project-title">부산시 밤길 안전 서비스, 안밤</h3>
             <div class="project-sub">2025.06.13 - 2025.06.25 | 팀 프로젝트</div>
             <div class="project-tech">
-              Stack: Java · Spring Boot · React · Oracle · JWT · Kakao Map API · Docker
+              <div class="tech-tags">
+                <!-- <span class="tag">Java</span> -->
+                <span class="tag">Spring Boot</span>
+                <span class="tag">React</span>
+                <span class="tag">Oracle</span>
+                <span class="tag">JWT</span>
+                <span class="tag">Kakao Map API</span>
+                <span class="tag">Docker</span>
+              </div>
             </div>
-
             <div class="project-image">
               <img src="image/project.gif" alt="안밤 프로젝트 시연" />
             </div>
-
+            <p style="font-size: 12px; color: #888">지도 데이터: © Kakao</p>
             <p class="project-desc">
               Kakao Map을 기반으로, 부산 지역의 CCTV 및 보안등 위치를 시각화하고
               시민 제보와 구·동별 안전 지표를 함께 제공하는 커뮤니티형 플랫폼
@@ -679,7 +755,70 @@
               <a href="https://github.com/sumin020415/project_2" target="_blank"
                 >🔗 [안밤] GitHub 바로가기</a
               >
+            </p>
           </div>
+
+          <!-- 프로젝트 3 -->
+          <div class="project-item">
+            <h3 class="project-title">학생 포트폴리오 관리 플랫폼 (기획)</h3>
+            <div class="project-sub">2024.11 | 팀 프로젝트</div>
+            <div class="project-tech">
+              Focus: 서비스 기획 · 요구분석 · 데이터/모델링
+            </div>
+
+            <div class="tech-tags">
+              <span class="tag">기획</span>
+              <span class="tag">요구분석</span>
+              <span class="tag">UML</span>
+              <span class="tag">UI 설계</span>
+            </div>
+
+            <!-- 이미지 넣고 싶으면 파일만 교체해서 쓰면 돼 -->
+            <div class="project-image-grid">
+              <img
+                src="./image/유스케이스다이어그램1.png"
+                alt="로그인/회원가입 와이어프레임"
+              />
+            </div>
+
+            <p class="project-desc">
+              대학생의 교내·외 활동을 체계적으로 기록·관리하고, 기록 데이터를
+              기반으로 자기소개서를 작성할 수 있게 하는 통합 플랫폼 설계
+            </p>
+
+            <ul class="project-feature">
+              <li>
+                <strong>핵심 기능</strong>: 사용자 계정(회원가입/로그인), 활동
+                관리(추가·수정·삭제·목록·불러오기), 자기소개서
+                관리(작성·수정·저장·조회)
+              </li>
+              <li>
+                <strong>요구분석</strong>: 주요 사용자(학생·학교 관리자·시스템
+                관리자) 정의, 핵심 요구·보안 요구 도출(데이터 암호화/개인정보
+                보호)
+              </li>
+              <li>
+                <strong>아키텍처/보안</strong>: 학사·비교과 시스템 API 연계
+                가정, SSL/TLS 전송, 권한관리·암호화 설계
+              </li>
+              <li>
+                <strong>UI 설계</strong>: 로그인/회원가입, 자기소개서 편집, 활동
+                관리 화면 와이어프레임 제작
+              </li>
+            </ul>
+
+            <p class="project-role">
+              <strong>역할:</strong> 유스케이스·시나리오 작성, 최종 보고서 작성,
+              데이터 분석 및 UI 설계
+            </p>
+
+            <p class="project-link">
+              <a href="docs/시스템분석및설계.pdf" target="_blank"
+                >🔗 기획서 문서 보기(PDF)</a
+              >
+            </p>
+          </div>
+
           <!-- 프로젝트 2 -->
           <div class="project-item">
             <h3 class="project-title">상권 추천 서비스, Sangchu</h3>
@@ -689,8 +828,15 @@
               2023.12.06 ~ 2023.12.29 | 데이터 수집, 분석, 모델링
             </div>
             <div class="project-tech">
-              Stack: python, pandas, matplotlib, numpy, tensorflow, django,
-              vanilla js
+              <div class="tech-tags">
+                <span class="tag">Python</span>
+                <span class="tag">pandas</span>
+                <span class="tag">matplotlib</span>
+                <span class="tag">NumPy</span>
+                <span class="tag">TensorFlow</span>
+                <span class="tag">Django</span>
+                <!-- <span class="tag">Vanilla JS</span> -->
+              </div>
             </div>
             <div class="project-image">
               <img
@@ -701,66 +847,30 @@
             </div>
             <p class="project-desc">부산 지역 상권 분석 & 매물 추천 서비스</p>
             <ul class="project-feature">
-              <li>메인 페이지: 조회수 기준으로 Top4 매물을 보여줍니다.</li>
+              <li>메인 페이지: 조회수 기준으로 Top4 매물을 보여줌</li>
               <li>
                 분석 페이지: 임대료 추세, 집객시설, 인구밀도 분포와 같은 부산시
                 분석 데이터들을 차트와 지도로 구현
               </li>
               <li>
                 매물 페이지: 매물 목록에서 선택한 매물의 상세 페이지에서 선택한
-                매물과 유사한 매물 5개를 추천해줍니다.
+                매물과 유사한 매물 5개를 추천
               </li>
               <li>
                 예측 페이지: 평수, 보증금, 상가종류, 임대면적, 전용면적, 층,
                 총층을 입력하여 월세 예측을 도와주는 모델
               </li>
             </ul>
-            <p class="project-role">
-              <strong>역할:</strong> 데이터 수집 및 정제, 분석, 모델 설계,
-              백엔드
-            </p>
             <p class="project-link">
               <a
                 href="https://github.com/offensivesoup/Sangchu_Final_PJT"
                 target="_blank"
-              >
-                🔗 [Sangchu] GitHub 바로가기
-              </a>
-            </p>
-          </div>
-          <!-- 프로젝트 3 -->
-          <div class="project-item">
-            <h3 class="project-title">
-              포트폴리오 관리를 위한 플랫폼 개발 기획
-            </h3>
-            <div class="project-sub">2024.11 | 팀 프로젝트</div>
-            <div class="project-tech">Focus: 서비스 기획 · 데이터 모델링</div>
-
-            <p class="project-desc">
-              대학생 교내외 활동 체계적으로 관리 및 자기소개서 작성, 커뮤니티
-              지원 플랫폼 <br />
-              사업 정의, 타당성 분석, 요구분석, 기능적 모델링, 정적 모델링, 동적
-              모델링
-            </p>
-
-            <ul class="project-feature">
-              <li>EDA를 통해 이탈과 관련된 주요 변수 도출</li>
-              <li>RandomForest, XGBoost 등 다양한 모델 비교 분석</li>
-              <li>Confusion Matrix, ROC Curve 등 성능 평가 시각화</li>
-            </ul>
-
-            <p class="project-role">
-              <strong>역할:</strong> 사용자 요구사항 및 데이터 분석, 서비스 기획안 및
-              모델링 문서 작성, UI 디자인
-            </p>
-
-            <p class="project-link">
-              <a href="docs/시스템분석및설계.pdf" target="_blank"
-                >🔗 기획서 문서 보기(PDF)</a
+                >🔗 [Sangchu] GitHub 바로가기</a
               >
             </p>
           </div>
         </div>
       </section>
+    </main>
   </body>
 </html>
