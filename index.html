@@ -25,7 +25,7 @@
         --radius-xl: 20px;
         --radius-md: 12px;
 
-        --content-max: 1040px;
+        --content-max: 1400px;
         --sidebar-w: 280px;
       }
 
@@ -37,7 +37,7 @@
 
       body {
         display: flex;
-        font-family: "Noto Sans KR", sans-serif;
+        font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
         background: var(--bg);
         color: var(--text);
         min-height: 100vh;
@@ -142,6 +142,12 @@
         padding-top: 20px;
       }
 
+      .section-divider {
+        border-top: 1px solid var(--line);
+        padding-top: 20px;
+        margin-top: 16px;
+      }
+
       /* Cards / Boxes */
       .box {
         background: var(--card);
@@ -176,7 +182,7 @@
 
       .grid-boxes {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 24px;
       }
 
@@ -197,12 +203,15 @@
         font-weight: 700;
         font-size: 18px;
         margin-bottom: 6px;
+        min-height: 48px;
+        word-break: keep-all;
       }
 
       .box-subinfo {
         font-size: 14px;
         color: var(--muted);
         margin-bottom: 16px;
+        min-height: 20px;
       }
 
       .box-content ul,
@@ -299,7 +308,7 @@
 
       .project-section > .box {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
         gap: 24px;
         border: none;
         box-shadow: none;
@@ -457,7 +466,7 @@
 
   <body>
     <aside class="sidebar">
-      <img src="image/profile.jpg" alt="프로필 사진" />
+      <img src="image/profile1.jpg" alt="프로필 사진" />
       <h2>정서영</h2>
       <p>데이터는 세상을 움직이는<br />열쇠라고 믿습니다.</p>
       <div class="contact-links">
@@ -479,6 +488,7 @@
     <main class="content">
       <section id="about">
         <h2 class="section-title">ABOUT ME</h2>
+        <div class="section-divider"></div>
         <strong
           >팀과 함께 더 나은 해답을 만들어가는 과정을 좋아합니다.<br /><br
         /></strong>
@@ -605,6 +615,7 @@
       <section class="two-column-section">
         <div class="column">
           <h2 class="section-title">Skill</h2>
+          <div class="section-divider"></div>
           <div class="box">
             <div class="skill">
               <span class="skill-name">Python</span>
@@ -658,6 +669,7 @@
 
         <div class="column">
           <h2 class="section-title">Achievements</h2>
+          <div class="section-divider"></div>
           <div class="box">
             <div class="info-section">
               <h3 class="info-title">🎓 학력</h3>
@@ -691,6 +703,7 @@
 
       <section class="project-section">
         <h2 class="section-title">Projects</h2>
+        <div class="section-divider"></div>
 
         <div class="box">
           <!-- 프로젝트 1 -->
