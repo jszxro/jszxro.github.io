@@ -424,6 +424,39 @@
       }
 
       /* Responsive */
+      @media (min-width: 769px) and (max-width: 1100px) {
+        :root {
+          --sidebar-w: 240px;
+        }
+
+        .sidebar {
+          padding: 32px 18px;
+        }
+
+        .content {
+          padding: 52px 32px;
+        }
+
+        .grid-boxes,
+        .project-section > .box {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .two-column-section {
+          gap: 24px;
+        }
+
+        .two-column-section .column {
+          min-width: 0;
+          flex-basis: 100%;
+        }
+
+        .thumb {
+          height: auto;
+          max-height: 360px;
+        }
+      }
+
       @media (max-width: 768px) {
         body {
           flex-direction: column;
@@ -507,11 +540,32 @@
             <div class="box-title">삼성청년SW·AI아카데미(SSAFY, 싸피)</div>
             <div class="box-subinfo">Samsung | 2026.01 - 현재</div>
             <div class="box-content">
-              <ul>
-                <li>알고리즘 문제 해결 및 자료구조 학습</li>
-                <li>Python 기반 문제 해결 능력 강화</li>
-                <li>팀 프로젝트 및 협업 기반 경험</li>
-              </ul>
+              <ol class="project-list">
+                <li>
+                  개발자 성향 기반 프로젝트 추천 서비스,
+                  <strong>Dit</strong><br />
+                  <span class="stack-text"
+                    ><strong>Stack</strong>: Vue 3, Django REST Framework,
+                    Pinia, SQLite, OpenAI API</span
+                  ><br />
+                  <a
+                    href="https://github.com/jszxro/Dit"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                    >🔗 [Dit] GitHub</a
+                  >
+                </li>
+                <br />
+                <li>
+                  <strong>Projectree</strong> (진행 중)<br />
+                  <span class="stack-text"
+                    ><strong>Stack</strong>: React, TypeScript, Vite, Spring
+                    Boot, JPA, WebSocket, MySQL, Redis, NAVER CLOVA, OpenAI,
+                    AWS EC2, RDS, S3, SQS, Lambda</span
+                  >
+                </li>
+              </ol>
             </div>
           </div>
           <div class="grid-box">
@@ -541,13 +595,6 @@
                   <span class="stack-text"
                     ><strong>Stack</strong>: Java, Spring Boot, Oracle, Docker,
                     React, Axios, Vite, Figma</span
-                  ><br />
-                  <a
-                    href="https://github.com/sumin020415/project_2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="project-link"
-                    >🔗 [안밤] GitHub</a
                   >
                 </li>
                 <br />
@@ -707,6 +754,63 @@
         <div class="section-divider"></div>
 
         <div class="box">
+          <!-- 프로젝트: Dit -->
+          <div class="project-item">
+            <h3 class="project-title">
+              개발자 성향 기반 프로젝트 추천 서비스, Dit
+            </h3>
+            <div class="project-sub">2026.06 | 팀 프로젝트</div>
+            <div class="project-tech">
+              <div class="tech-tags">
+                <span class="tag">Vue 3</span>
+                <span class="tag">Django REST Framework</span>
+                <span class="tag">Pinia</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">OpenAI API</span>
+              </div>
+            </div>
+            <div class="project-image">
+              <a
+                href="https://github.com/jszxro/Dit"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Dit GitHub 저장소로 이동"
+              >
+                <img
+                  src="image/Dit.png"
+                  class="thumb"
+                  alt="Dit 프로젝트 화면"
+                />
+              </a>
+            </div>
+            <p class="project-desc">
+              DBTI 검사를 통해 개발 성향을 분석하고, AI 챗봇 Diti가 사용자의
+              DBTI 결과와 프로필을 반영해 맞춤형 포트폴리오 프로젝트를
+              추천하는 커뮤니티 서비스
+            </p>
+            <ul class="project-feature">
+              <li>개발 성향을 진단하는 DBTI 검사 및 결과 리포트 제공</li>
+              <li>
+                DBTI, 희망 직무, 전공, 보유 기술을 반영한 AI 프로젝트 추천
+              </li>
+              <li>추천 프로젝트 상세 기획 확인 및 관심 프로젝트 저장</li>
+              <li>개발 경험과 프로젝트 아이디어를 공유하는 커뮤니티 구현</li>
+              <li>DRF Token 인증 및 Pinia 기반 사용자 상태 관리</li>
+            </ul>
+            <p class="project-role">
+              <strong>역할:</strong> 회원 인증 및 마이페이지, AI 프로젝트 추천,
+              프로젝트 저장, 커뮤니티 주요 기능 구현
+            </p>
+            <p class="project-link">
+              <a
+                href="https://github.com/jszxro/Dit"
+                target="_blank"
+                rel="noopener noreferrer"
+                >🔗 [Dit] GitHub 바로가기</a
+              >
+            </p>
+          </div>
+
           <!-- 프로젝트 1 -->
           <div class="project-item">
             <h3 class="project-title">감정 기반 음악 추천 서비스, Moodlog</h3>
@@ -775,17 +879,11 @@
               </div>
             </div>
             <div class="project-image">
-              <a
-                href="https://github.com/sumin020415/project_2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="image/project.gif"
-                  class="thumb thumb--gif"
-                  alt="안밤 프로젝트 시연"
-                />
-              </a>
+              <img
+                src="image/project.gif"
+                class="thumb thumb--gif"
+                alt="안밤 프로젝트 시연"
+              />
             </div>
             <p style="font-size: 12px; color: #888">지도 데이터: © Kakao</p>
             <p class="project-desc">
@@ -800,14 +898,6 @@
             <p class="project-role">
               <strong>역할:</strong> 요구사항 정의 및 기획, DB 연동, 백엔드 API
               구현
-            </p>
-            <p class="project-link">
-              <a
-                href="https://github.com/sumin020415/project_2"
-                target="_blank"
-                rel="noopener noreferrer"
-                >🔗 [안밤] GitHub 바로가기</a
-              >
             </p>
           </div>
 
