@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
 
-:root{font-family:'Manrope','Noto Sans KR',sans-serif;color:#1f2937;background:#fff;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--bg:#fff;--surface:#fff;--text:#1f2937;--muted:#647383;--primary:#3157c8;--lime:#d9f99d;--sky:#a9d6e5;--pale-sky:#edf6fa;--line:#dce5ea;--dark:#1f2937;--content:1240px}
+:root{font-family:'Noto Sans KR',sans-serif;color:#1f2937;background:#fff;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--bg:#fff;--surface:#fff;--text:#1f2937;--muted:#647383;--primary:#3157c8;--lime:#d9f99d;--sky:#a9d6e5;--pale-sky:#edf6fa;--line:#dce5ea;--dark:#1f2937;--content:1240px}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#a9d6e5 #edf6fa}body{margin:0;min-width:320px;min-height:100vh;background:var(--bg)}a{color:inherit}::selection{color:var(--dark);background:var(--lime)}#root{min-height:100vh}::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#edf6fa}::-webkit-scrollbar-thumb{border:2px solid #edf6fa;border-radius:999px;background:#a9d6e5}::-webkit-scrollbar-thumb:hover{background:#7fb8cc}
 
 html[data-theme='dark']{color-scheme:dark;--bg:#101722;--surface:#182231;--text:#eef4f8;--muted:#9cabb7;--primary:#8eabff;--sky:#79b8cf;--pale-sky:#1d2b3a;--line:#2d3a49;--dark:#0b111b}html[data-theme='dark'] body{background:var(--bg)}
