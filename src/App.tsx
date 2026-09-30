@@ -1,5 +1,6 @@
 import { type PointerEvent as ReactPointerEvent, useEffect, useRef, useState } from 'react'
 import './App.css'
+import AnbamPage from './pages/AnbamPage'
 import DodamPage from './pages/DodamPage'
 import DitPage from './pages/DitPage'
 import MoodlogPage from './pages/MoodlogPage'
@@ -38,12 +39,13 @@ const projects = [
   },
   {
     title: '안밤',
-    category: 'Full-stack · Map',
-    description: '부산 지역의 밤길 안전 정보를 한눈에 확인하고 공유하는 지도 기반 서비스',
-    contribution: '요구사항 정의 · 데이터베이스 연동 · 백엔드 API',
+    category: 'Backend-centered Full-stack · Map',
+    description: '공공 안전 데이터와 시민 제보를 한 지도에 연결해 주변의 밤길 정보를 확인하고 공유하는 서비스',
+    contribution: '백엔드 · 인증 흐름 · 공공데이터 시각화',
     stack: ['React', 'Spring Boot', 'Oracle', 'Kakao Map API'],
     cover: '/images/projects/anbam/anbam-cover.gif',
     tone: 'blue',
+    href: '#/projects/anbam',
   },
   {
     title: '상추 (Sangchu)',
@@ -86,8 +88,9 @@ function App() {
   const isDodamPage = route === '#/projects/dodam'
   const isDitPage = route === '#/projects/dit'
   const isMoodlogPage = route === '#/projects/moodlog'
+  const isAnbamPage = route === '#/projects/anbam'
   const isProjectreePage = route === '#/projects/projectree'
-  const isProjectDetailPage = isDodamPage || isDitPage || isMoodlogPage || isProjectreePage
+  const isProjectDetailPage = isDodamPage || isDitPage || isMoodlogPage || isAnbamPage || isProjectreePage
   const scrollTrackRef = useRef<HTMLDivElement>(null)
   const scrollThumbRef = useRef<HTMLDivElement>(null)
   const profileTriggerRef = useRef<HTMLButtonElement>(null)
@@ -213,7 +216,7 @@ function App() {
       </div>
 
       <main>
-        {isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : isDitPage ? <DitPage /> : isMoodlogPage ? <MoodlogPage /> : (
+        {isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : isDitPage ? <DitPage /> : isMoodlogPage ? <MoodlogPage /> : isAnbamPage ? <AnbamPage /> : (
           <>
         <section className="page-cover" aria-label="포트폴리오 커버">
           <button className="cover-theme-toggle" type="button" onClick={() => setTheme((current) => current === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? '다크 모드로 전환' : '라이트 모드로 전환'} aria-pressed={theme === 'dark'} title={theme === 'light' ? '해를 눌러 밤으로' : '달을 눌러 낮으로'}>
