@@ -1,4 +1,4 @@
-.dodam-page{--dodam-container:1080px;--dodam-reading-width:920px;--dodam-gutter:40px;background:var(--bg);color:var(--text)}
+.dodam-page{--dodam-container:1080px;--dodam-reading-width:1080px;--dodam-gutter:40px;background:var(--bg);color:var(--text)}
 .dodam-hero{padding:74px 0 68px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--bg) 0 56%,var(--pale-sky) 56%)}
 .dodam-hero-inner,.dodam-content{width:min(1120px,calc(100% - 48px));margin:0 auto}
 .dodam-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
@@ -28,7 +28,7 @@ html[data-theme='dark'] .dodam-hero{background:linear-gradient(135deg,var(--bg) 
 
 /* Document-first case study: quiet, readable, and Notion-like. */
 .dodam-page{background:var(--bg)}
-.dodam-hero{padding:64px 0 42px;background:var(--bg)}
+.dodam-hero{padding:64px 0 50px;background:var(--bg)}
 .dodam-hero-inner,.dodam-content{width:min(900px,calc(100% - 48px))}
 .dodam-hero-inner{display:flex;flex-direction:column;gap:0}
 .dodam-back{margin-bottom:46px}
