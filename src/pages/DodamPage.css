@@ -177,3 +177,52 @@ html[data-theme='dark'] .dodam-screen-placeholder.has-image{border-color:#303740
 .dodam-work-section .dodam-prose{margin-bottom:31px}
 .dodam-qa-list{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:28px 0 0;padding:0;border-top:1px solid var(--line);list-style:none}.dodam-qa-list li{padding:15px 5px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.86rem}.dodam-qa-list li::before{content:'✓';margin-right:9px;color:#86aa42;font-weight:800}
 @media(max-width:720px){.dodam-key-question,.dodam-planning-note{grid-template-columns:1fr;gap:10px}.dodam-qa-list{grid-template-columns:1fr}.dodam-prose>p,.dodam-section-intro{font-size:.95rem}.dodam-key-question>p{font-size:1rem}}
+
+/* STAR case-study structure. */
+.dodam-troubleshooting details>div{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dodam-retrospective>.dodam-result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));justify-content:stretch;gap:0;margin:0 0 38px;border-block:1px solid var(--line);text-align:left}
+.dodam-result-grid article{padding:24px 22px;border-right:1px solid var(--line)}
+.dodam-result-grid article:first-child{padding-left:0}
+.dodam-result-grid article:last-child{padding-right:0;border-right:0}
+.dodam-result-grid span{display:block;margin-bottom:22px;color:var(--primary);font-size:.72rem;font-weight:800;letter-spacing:.12em}
+.dodam-result-grid strong{display:block;margin-bottom:10px;font-size:1rem;line-height:1.45}
+.dodam-result-grid p{margin:0;color:color-mix(in srgb,var(--text) 68%,var(--muted));font-size:.86rem;line-height:1.75}
+.dodam-retrospective>.dodam-retrospective-actions{display:flex;justify-content:flex-start;gap:9px;margin-top:31px}
+
+@media(max-width:720px){
+  .dodam-troubleshooting details>div{grid-template-columns:1fr}
+  .dodam-retrospective>.dodam-result-grid{grid-template-columns:1fr}
+  .dodam-result-grid article,.dodam-result-grid article:first-child,.dodam-result-grid article:last-child{padding:20px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .dodam-result-grid article:last-child{border-bottom:0}
+  .dodam-result-grid span{margin-bottom:10px}
+}
+
+@media(max-width:480px){.dodam-retrospective>.dodam-retrospective-actions{display:grid}}
+
+/* In-depth troubleshooting cases. */
+.dodam-troubleshooting details>.dodam-case-body{display:block;padding:8px 0 42px 45px}
+.dodam-troubleshooting .dodam-case-body p{margin:0;padding:0;border-radius:0;background:transparent;color:color-mix(in srgb,var(--text) 70%,var(--muted));font-size:.9rem;line-height:1.85;word-break:keep-all}
+.dodam-troubleshooting .dodam-case-lead{margin:0 0 25px;padding:20px 22px;border-left:3px solid var(--lime);background:var(--pale-sky);color:var(--text);font-size:1rem;font-weight:650;line-height:1.75}
+.dodam-case-context{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dodam-case-context section{padding:22px;border:1px solid var(--line);border-radius:7px;background:var(--surface)}
+.dodam-case-body section>span{display:block;margin-bottom:11px;color:var(--primary);font-size:.68rem;font-weight:800;letter-spacing:.13em}
+.dodam-case-body h4{margin:0 0 10px;color:var(--text);font-size:1rem;line-height:1.55;letter-spacing:-.02em}
+.dodam-case-analysis{margin:12px 0;padding:22px;border-left:3px solid var(--primary);background:color-mix(in srgb,var(--pale-sky) 65%,var(--surface))}
+.dodam-case-action{padding:26px 0 8px}
+.dodam-case-action ol{display:grid;gap:10px;margin:17px 0 20px;padding-left:22px;color:color-mix(in srgb,var(--text) 72%,var(--muted));font-size:.9rem;line-height:1.75}
+.dodam-case-body code{padding:.12em .35em;border-radius:4px;background:color-mix(in srgb,var(--primary) 10%,var(--surface));color:var(--text);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.86em}
+.dodam-case-action pre{margin:0;padding:17px 19px;overflow-x:auto;border:1px solid var(--line);border-radius:7px;background:#172131;color:#dce9f2;font-size:.78rem;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.dodam-case-action pre code{padding:0;background:transparent;color:inherit;font-size:inherit}
+.dodam-case-outcome{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:23px;border-block:1px solid var(--line)}
+.dodam-case-outcome section{padding:23px 22px;border-right:1px solid var(--line)}
+.dodam-case-outcome section:first-child{padding-left:0}.dodam-case-outcome section:last-child{padding-right:0;border-right:0}
+.dodam-case-outcome ul{display:grid;gap:8px;margin:0;padding-left:18px;color:color-mix(in srgb,var(--text) 72%,var(--muted));font-size:.88rem;line-height:1.65}
+html[data-theme='dark'] .dodam-case-action pre{background:#090f18;border-color:#2a394a}
+
+@media(max-width:720px){
+  .dodam-troubleshooting details>.dodam-case-body{padding:6px 0 34px}
+  .dodam-case-context,.dodam-case-outcome{grid-template-columns:1fr}
+  .dodam-case-context section{padding:19px}
+  .dodam-case-outcome section,.dodam-case-outcome section:first-child,.dodam-case-outcome section:last-child{padding:20px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .dodam-case-outcome section:last-child{border-bottom:0}
+}
