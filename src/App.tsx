@@ -306,8 +306,8 @@ function App() {
               <div className="featured-body">
                 <p className="project-meta">FEATURED · MOBILE FINTECH</p>
                 <h3>Dodam</h3>
-                <p>프로젝트 상세 내용은 정리 중입니다.</p>
-                <dl><div><dt>My role</dt><dd>프론트엔드 · UI/UX · API 연동</dd></div><div><dt>Stack</dt><dd>React Native · Expo · TypeScript</dd></div></dl>
+                <p>흩어진 금융 데이터를 판단 기준으로 바꾸고, 사용자가 다음 금융 행동을 선택하도록 돕는 금융 코칭 서비스입니다.</p>
+                <dl><div><dt>My role</dt><dd>프론트엔드 · UX 흐름 설계 · API 연동</dd></div><div><dt>Stack</dt><dd>React Native · Expo · TypeScript · Spring Boot · K-Means · EAS Build</dd></div></dl>
                 <a href="#/projects/dodam">프로젝트 자세히 보기 <span>→</span></a>
               </div>
             </article>

@@ -43,9 +43,10 @@ function DodamPage() {
               </div>
               <div className="dodam-property-panel">
                 <div className="dodam-meta">
-                  <div><small>PERIOD</small><strong>2026.07 — 2026.09</strong></div>
-                  <div><small>ROLE</small><strong>Frontend · UI/UX · API</strong></div>
-                  <div><small>TEAM</small><strong>추후 입력</strong></div>
+                  <div><small>PERIOD</small><strong>2026.08 — 2026.09</strong></div>
+                  <div><small>ROLE</small><strong>Frontend · UX Flow · API Integration</strong></div>
+                  <div><small>TEAM</small><strong>SSAFY 특화 프로젝트 · D105팀</strong></div>
+                  <div><small>STACK</small><strong>React Native · Expo · TypeScript · Expo Router · Reanimated · Spring Boot · K-Means · EAS Build</strong></div>
                 </div>
                 <div className="dodam-links" aria-label="프로젝트 외부 링크">
                   <button type="button" disabled>Figma · 추후 연결</button>
@@ -103,7 +104,6 @@ function DodamPage() {
             <article><span>API CONTRACT</span><h3>응답 코드와 사용자 상태 분리</h3><p>같은 404라도 분석 전 상태와 실제 오류의 의미가 다르다고 판단했습니다. API 응답 타입과 화면 상태를 분리하고 각 상황에 맞는 안내와 다음 행동을 정의했습니다.</p></article>
             <article><span>RELEASE VALIDATION</span><h3>개발 화면과 실기기의 차이 해소</h3><p>개발 서버의 정상 동작만으로 배포 가능 여부를 판단할 수 없었습니다. EAS Preview APK로 Android 레이아웃과 네이티브 빌드를 검증해 실제 기기에 설치 가능한 결과물을 만들었습니다.</p></article>
           </div>
-          <div className="dodam-stack"><strong>STACK</strong><span>React Native</span><span>Expo</span><span>TypeScript</span><span>Expo Router</span><span>react-native-svg</span><span>EAS Build</span></div>
         </section>
 
         <section className="dodam-section" id="dodam-features">
