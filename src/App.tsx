@@ -110,7 +110,9 @@ function App() {
       }),
       { threshold: 0.12, rootMargin: '0px 0px -45px' },
     )
-    document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element))
+    if (!isDodamPage) {
+      document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element))
+    }
     updateScrollbar()
     window.addEventListener('scroll', requestUpdate, { passive: true })
     window.addEventListener('resize', requestUpdate)
@@ -121,7 +123,7 @@ function App() {
       if (frame) window.cancelAnimationFrame(frame)
       observer.disconnect()
     }
-  }, [])
+  }, [isDodamPage])
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
