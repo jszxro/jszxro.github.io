@@ -2,6 +2,7 @@ import { type PointerEvent as ReactPointerEvent, useEffect, useRef, useState } f
 import './App.css'
 import DodamPage from './pages/DodamPage'
 import DitPage from './pages/DitPage'
+import MoodlogPage from './pages/MoodlogPage'
 import ProjectreePage from './pages/ProjectreePage'
 
 const projects = [
@@ -27,12 +28,13 @@ const projects = [
   },
   {
     title: 'Moodlog',
-    category: 'Planning · Full-stack',
-    description: '감정 기록이 새로운 음악을 발견하는 경험으로 이어지는 서비스',
-    contribution: '서비스 기획 · UI 설계 · API 연동',
-    stack: ['React', 'Figma', 'Spring Boot', 'Oracle'],
+    category: 'PM · Backend · Full-stack',
+    description: '오늘의 감정을 음악으로 발견하고, 일기와 커뮤니티로 이어 기록하는 서비스',
+    contribution: '서비스 기획 · 백엔드 · 화면 연동',
+    stack: ['Spring Boot', 'JPA', 'Oracle', 'React'],
     cover: '/images/projects/moodlog/moodlog-cover.png',
     tone: 'sky',
+    href: '#/projects/moodlog',
   },
   {
     title: '안밤',
@@ -83,8 +85,9 @@ function App() {
   const [route, setRoute] = useState(() => window.location.hash)
   const isDodamPage = route === '#/projects/dodam'
   const isDitPage = route === '#/projects/dit'
+  const isMoodlogPage = route === '#/projects/moodlog'
   const isProjectreePage = route === '#/projects/projectree'
-  const isProjectDetailPage = isDodamPage || isDitPage || isProjectreePage
+  const isProjectDetailPage = isDodamPage || isDitPage || isMoodlogPage || isProjectreePage
   const scrollTrackRef = useRef<HTMLDivElement>(null)
   const scrollThumbRef = useRef<HTMLDivElement>(null)
   const profileTriggerRef = useRef<HTMLButtonElement>(null)
@@ -210,7 +213,7 @@ function App() {
       </div>
 
       <main>
-        {isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : isDitPage ? <DitPage /> : (
+        {isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : isDitPage ? <DitPage /> : isMoodlogPage ? <MoodlogPage /> : (
           <>
         <section className="page-cover" aria-label="포트폴리오 커버">
           <button className="cover-theme-toggle" type="button" onClick={() => setTheme((current) => current === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? '다크 모드로 전환' : '라이트 모드로 전환'} aria-pressed={theme === 'dark'} title={theme === 'light' ? '해를 눌러 밤으로' : '달을 눌러 낮으로'}>
