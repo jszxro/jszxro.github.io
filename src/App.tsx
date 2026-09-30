@@ -1,6 +1,7 @@
 import { type PointerEvent as ReactPointerEvent, useEffect, useRef, useState } from 'react'
 import './App.css'
 import DodamPage from './pages/DodamPage'
+import ProjectreePage from './pages/ProjectreePage'
 
 const projects = [
   {
@@ -11,6 +12,7 @@ const projects = [
     stack: ['React', 'TypeScript', 'Spring Boot', 'WebSocket'],
     cover: '/images/projects/projectree/projectree-cover.png',
     tone: 'blue',
+    href: '#/projects/projectree',
   },
   {
     title: 'Dit',
@@ -78,6 +80,8 @@ function App() {
   const [isProfileOpen, setIsProfileOpen] = useState(false)
   const [route, setRoute] = useState(() => window.location.hash)
   const isDodamPage = route === '#/projects/dodam'
+  const isProjectreePage = route === '#/projects/projectree'
+  const isProjectDetailPage = isDodamPage || isProjectreePage
   const scrollTrackRef = useRef<HTMLDivElement>(null)
   const scrollThumbRef = useRef<HTMLDivElement>(null)
   const profileTriggerRef = useRef<HTMLButtonElement>(null)
@@ -110,7 +114,7 @@ function App() {
       }),
       { threshold: 0.12, rootMargin: '0px 0px -45px' },
     )
-    if (!isDodamPage) {
+    if (!isProjectDetailPage) {
       document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element))
     }
     updateScrollbar()
@@ -123,7 +127,7 @@ function App() {
       if (frame) window.cancelAnimationFrame(frame)
       observer.disconnect()
     }
-  }, [isDodamPage])
+  }, [isProjectDetailPage])
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -138,11 +142,11 @@ function App() {
 
   useEffect(() => {
     window.requestAnimationFrame(() => {
-      if (isDodamPage) window.scrollTo({ top: 0 })
+      if (isProjectDetailPage) window.scrollTo({ top: 0 })
       else if (route && !route.startsWith('#/')) document.querySelector(route)?.scrollIntoView()
       window.dispatchEvent(new Event('resize'))
     })
-  }, [isDodamPage, route])
+  }, [isProjectDetailPage, route])
 
   useEffect(() => {
     if (!isProfileOpen) return
@@ -203,7 +207,7 @@ function App() {
       </div>
 
       <main>
-        {isDodamPage ? <DodamPage /> : (
+        {isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : (
           <>
         <section className="page-cover" aria-label="포트폴리오 커버">
           <button className="cover-theme-toggle" type="button" onClick={() => setTheme((current) => current === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? '다크 모드로 전환' : '라이트 모드로 전환'} aria-pressed={theme === 'dark'} title={theme === 'light' ? '해를 눌러 밤으로' : '달을 눌러 낮으로'}>
@@ -318,6 +322,7 @@ function App() {
             <div className="project-grid">
               {projects.map((project) => (
                 <article className="project-card" key={project.title}>
+                  {project.href && <a className="project-card-hitarea" href={project.href} aria-label={`${project.title} 프로젝트 상세 페이지 보기`} />}
                   <div className={`card-image ${project.tone}`}><ImagePlaceholder label={project.title} src={project.cover} /></div>
                   <div className="card-body"><p className="project-meta">{project.category}</p><h3>{project.title}</h3><p>{project.description}</p><small>{project.contribution}</small><div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div></div>
                 </article>
@@ -341,7 +346,7 @@ function App() {
         )}
       </main>
 
-      {!isDodamPage && isProfileOpen && (
+      {!isProjectDetailPage && isProfileOpen && (
         <div className="profile-modal-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setIsProfileOpen(false) }}>
           <section className="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title" aria-describedby="profile-modal-description">
             <button ref={profileCloseRef} className="profile-modal-close" type="button" onClick={() => setIsProfileOpen(false)} aria-label="상세 프로필 닫기">×</button>
