@@ -6,10 +6,10 @@ import ProjectreePage from './pages/ProjectreePage'
 const projects = [
   {
     title: 'Projectree',
-    category: 'Featured · Full-stack',
-    description: '팀의 프로젝트 경험을 하나의 흐름으로 연결하는 협업 서비스',
-    contribution: '기획 · 프론트엔드 · 서비스 구현',
-    stack: ['React', 'TypeScript', 'Spring Boot', 'WebSocket'],
+    category: 'Frontend · Collaboration',
+    description: '회의에서 흩어지는 아이디어를 구조화하고, 기록과 피드백을 다음 협업으로 연결하는 서비스',
+    contribution: '프론트엔드 · UX 흐름 · API 연동',
+    stack: ['React', 'TypeScript', 'Zustand', 'SSE'],
     cover: '/images/projects/projectree/projectree-cover.png',
     tone: 'blue',
     href: '#/projects/projectree',
