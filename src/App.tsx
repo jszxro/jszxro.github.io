@@ -5,6 +5,7 @@ import DodamPage from './pages/DodamPage'
 import DitPage from './pages/DitPage'
 import MoodlogPage from './pages/MoodlogPage'
 import ProjectreePage from './pages/ProjectreePage'
+import SangchuPage from './pages/SangchuPage'
 
 const projects = [
   {
@@ -49,12 +50,13 @@ const projects = [
   },
   {
     title: '상추 (Sangchu)',
-    category: 'Data · Recommendation',
-    description: '부산 지역 상권 데이터를 분석해 조건에 맞는 매물을 추천하는 서비스',
-    contribution: '데이터 수집·정제 · 데이터 분석 · 추천 모델',
-    stack: ['Python', 'Pandas', 'TensorFlow', 'Django'],
+    category: 'Data · ML Integration',
+    description: '부산 지역 상권 데이터를 비교하고 상가 조건에 따른 월세를 예측하는 상권 분석 서비스',
+    contribution: '상권 데이터 시각화 · 월세 예측 · Django 연동',
+    stack: ['Python', 'Django', 'Pandas', 'scikit-learn'],
     cover: '/images/projects/sangchu/sangchu-cover.png',
-    tone: 'lime',
+    tone: 'sky',
+    href: '#/projects/sangchu',
   },
 ]
 
@@ -90,7 +92,8 @@ function App() {
   const isMoodlogPage = route === '#/projects/moodlog'
   const isAnbamPage = route === '#/projects/anbam'
   const isProjectreePage = route === '#/projects/projectree'
-  const isProjectDetailPage = isDodamPage || isDitPage || isMoodlogPage || isAnbamPage || isProjectreePage
+  const isSangchuPage = route === '#/projects/sangchu'
+  const isProjectDetailPage = isDodamPage || isDitPage || isMoodlogPage || isAnbamPage || isProjectreePage || isSangchuPage
   const scrollTrackRef = useRef<HTMLDivElement>(null)
   const scrollThumbRef = useRef<HTMLDivElement>(null)
   const profileTriggerRef = useRef<HTMLButtonElement>(null)
@@ -216,7 +219,7 @@ function App() {
       </div>
 
       <main>
-        {isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : isDitPage ? <DitPage /> : isMoodlogPage ? <MoodlogPage /> : isAnbamPage ? <AnbamPage /> : (
+        {isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : isDitPage ? <DitPage /> : isMoodlogPage ? <MoodlogPage /> : isAnbamPage ? <AnbamPage /> : isSangchuPage ? <SangchuPage /> : (
           <>
         <section className="page-cover" aria-label="포트폴리오 커버">
           <button className="cover-theme-toggle" type="button" onClick={() => setTheme((current) => current === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? '다크 모드로 전환' : '라이트 모드로 전환'} aria-pressed={theme === 'dark'} title={theme === 'light' ? '해를 눌러 밤으로' : '달을 눌러 낮으로'}>
