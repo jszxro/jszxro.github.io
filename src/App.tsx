@@ -296,7 +296,7 @@ function App() {
 
             <aside className="hero-profile-card" aria-label="정서영 프로필 요약">
               <button ref={profileTriggerRef} className="profile-card-trigger" type="button" onClick={() => setIsProfileOpen(true)} aria-haspopup="dialog" aria-label="정서영 상세 프로필 열기" title="상세 프로필 보기" />
-              <div className="profile-top"><img className="profile-photo" src="/images/profile/profile.jpg" alt="정서영 프로필 사진" /><span className="profile-status"><i /> Available</span></div>
+              <div className="profile-top"><img className="profile-photo" src="/images/profile/profile.png" alt="정서영 프로필 사진" /><span className="profile-status"><i /> Available</span></div>
               <p className="profile-label">PROFILE</p><h2>정서영</h2><p className="profile-role">기획과 구현을 연결하는<br />프론트엔드 개발자</p>
               <dl><div><dt>Based in</dt><dd>Gumi, Korea</dd></div><div><dt>Focus</dt><dd>React · UX · Product</dd></div></dl>
               <div className="profile-actions"><a href="mailto:jszxro@naver.com">Email ↗</a><a href="https://github.com/jszxro" target="_blank" rel="noreferrer">GitHub ↗</a></div>
@@ -363,7 +363,7 @@ function App() {
           <section className="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title" aria-describedby="profile-modal-description">
             <button ref={profileCloseRef} className="profile-modal-close" type="button" onClick={() => setIsProfileOpen(false)} aria-label="상세 프로필 닫기">×</button>
             <div className="profile-modal-portrait">
-              <img src="/images/profile/profile.jpg" alt="정서영 프로필 사진" />
+              <img src="/images/profile/profile.png" alt="정서영 프로필 사진" />
               <div><span><i /> AVAILABLE</span><p>Gumi, Korea</p></div>
             </div>
             <div className="profile-modal-content">
