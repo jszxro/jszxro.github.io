@@ -2,12 +2,13 @@ import './HomeShowcase.css'
 import './ProjectUniverse.css'
 import './ProjectRibbon.css'
 import './LaptopShowcase.css'
+import ProjectCollection from './ProjectCollection'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { otherProjects } from '../data/portfolio'
 
 const galleryProjects = [
   { title: 'Geomate', category: 'Interactive learning', cover: '/images/projects/geomate/geomate-cover.png', href: '#/projects/geomate' },
-  ...otherProjects.filter(project => project.title !== 'Moodlog' && project.href !== '#/projects/anbam'),
+  ...otherProjects,
 ]
 
 const projectNotes: Record<string, { title: string; description: string }> = {
@@ -158,18 +159,6 @@ export default function HomeShowcase({ onProfile, onTheme, theme }: { onProfile:
       </div>
       <div className="universe-footer"><span>아이디어에서, 작동하는 경험으로.</span><span>프로젝트를 선택해 자세히 살펴보세요 ↗</span></div>
     </section>
-    <section className="selected-studio" id="projects">
-      <div className="studio-heading"><div><p>01 / SELECTED WORK</p><h2>생각이 화면이 되기까지.</h2></div><span>기획에서 구현까지, 직접 만든 경험들</span></div>
-      <a className="project-scene geomate-scene" href="#/projects/geomate">
-        <div className="scene-copy"><span className="scene-category">GEOMATE / INTERACTIVE LEARNING</span><h3>도형을 움직이며,<br />이해를 발견하다.</h3><p>사진 속 문제에서 직접 탐구하는 학습 공간으로.</p><span className="scene-pill">프로젝트 자세히 보기 ↗</span></div>
-        <div className="geomate-composition" aria-hidden="true"><img className="tablet-main" src="/images/projects/geomate/screens/workspace.png" alt="" /><img className="tablet-secondary" src="/images/projects/geomate/screens/home.png" alt="" /><div className="scene-label label-one"><b>01 — EXPLORE</b><span>직접 움직이는 도형 학습</span></div><div className="scene-label label-two"><b>02 — CONNECT</b><span>탐구에서 기록까지</span></div></div>
-        <div className="scene-foot"><span>React Native · Expo · TypeScript</span><span>Frontend / UI·UX / API / QA</span></div>
-      </a>
-      <a className="project-scene dodam-scene" href="#/projects/dodam">
-        <div className="scene-copy"><span className="scene-category">DODAM / PERSONAL FINANCE</span><h3>흩어진 금융 정보가<br />나를 위한 방향으로.</h3><p>정보를 이해하고, 다음 금융 행동을 선택하는 경험.</p><span className="scene-pill">프로젝트 자세히 보기 ↗</span></div>
-        <div className="dodam-composition" aria-hidden="true"><div className="scene-orbit" /><img className="phone-back" src="/images/projects/dodam/screens/report-overview.png" alt="" /><img className="phone-front" src="/images/projects/dodam/screens/home.png" alt="" /><img className="phone-side" src="/images/projects/dodam/screens/ai-coach.png" alt="" /><span className="finance-caption">Understand. Decide. Grow.</span></div>
-        <div className="scene-foot"><span>React Native · Expo · TypeScript</span><span>Frontend / UX / API</span></div>
-      </a>
-    </section>
+    <ProjectCollection />
   </>
 }

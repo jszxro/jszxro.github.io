@@ -3,27 +3,13 @@ import './App.css'
 import './HomeRefresh.css'
 import HomeShowcase from './pages/HomeShowcase'
 import PortfolioOverview from './pages/PortfolioOverview'
-import { otherProjects as projects, experience } from './data/portfolio'
-import AnbamPage from './pages/AnbamPage'
+import { experience } from './data/portfolio'
 import DodamPage from './pages/DodamPage'
 import GeomatePage from './pages/GeomatePage'
 import DitPage from './pages/DitPage'
-import MoodlogPage from './pages/MoodlogPage'
 import ProjectreePage from './pages/ProjectreePage'
 import SangchuPage from './pages/SangchuPage'
 
-
-function ImagePlaceholder({ label, src }: { label: string; src?: string }) {
-  return (
-    <div className={`image-placeholder${src ? ' has-image' : ''}`}>
-      {src ? (
-        <img src={src} alt={`${label} 프로젝트 대표 화면`} />
-      ) : (
-        <><span className="placeholder-icon" aria-hidden="true">▧</span><strong>{label}</strong><small>PROJECT IMAGE · 16:9</small></>
-      )}
-    </div>
-  )
-}
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -37,11 +23,9 @@ function App() {
   const isGeomatePage = route === '#/projects/geomate'
   const isDodamPage = route === '#/projects/dodam'
   const isDitPage = route === '#/projects/dit'
-  const isMoodlogPage = route === '#/projects/moodlog'
-  const isAnbamPage = route === '#/projects/anbam'
   const isProjectreePage = route === '#/projects/projectree'
   const isSangchuPage = route === '#/projects/sangchu'
-  const isProjectDetailPage = isOverviewPage || isGeomatePage || isDodamPage || isDitPage || isMoodlogPage || isAnbamPage || isProjectreePage || isSangchuPage
+  const isProjectDetailPage = isOverviewPage || isGeomatePage || isDodamPage || isDitPage || isProjectreePage || isSangchuPage
   const scrollTrackRef = useRef<HTMLDivElement>(null)
   const scrollThumbRef = useRef<HTMLDivElement>(null)
   const profileTriggerRef = useRef<HTMLButtonElement>(null)
@@ -168,23 +152,10 @@ function App() {
       </div>
 
       <main>
-        {isOverviewPage ? <PortfolioOverview /> : isGeomatePage ? <GeomatePage /> : isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : isDitPage ? <DitPage /> : isMoodlogPage ? <MoodlogPage /> : isAnbamPage ? <AnbamPage /> : isSangchuPage ? <SangchuPage /> : (
+        {isOverviewPage ? <PortfolioOverview /> : isGeomatePage ? <GeomatePage /> : isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : isDitPage ? <DitPage /> : isSangchuPage ? <SangchuPage /> : (
           <>
         <article className="document">
           <HomeShowcase onProfile={() => setIsProfileOpen(true)} onTheme={() => setTheme(current => current === 'light' ? 'dark' : 'light')} theme={theme} />
-
-          <section className="doc-section archive" data-reveal>
-            <div className="section-title-row"><div><p className="eyebrow">ARCHIVE</p><h2>All projects</h2></div></div>
-            <div className="project-grid">
-              {[{ title: 'Geomate', category: 'Frontend / Tablet Learning', description: '도형을 직접 움직이며 탐구하는 태블릿 학습 서비스', contribution: 'Frontend / UI UX / API / QA', stack: ['React Native', 'TypeScript', 'Expo'], cover: '/images/projects/geomate/geomate-cover.png', tone: 'blue', href: '#/projects/geomate' }, ...projects].map((project) => (
-                <article className="project-card" key={project.title}>
-                  {project.href && <a className="project-card-hitarea" href={project.href} aria-label={`${project.title} 프로젝트 상세 페이지 보기`} />}
-                  <div className={`card-image ${project.tone}`}><ImagePlaceholder label={project.title} src={project.cover} /></div>
-                  <div className="card-body"><p className="project-meta">{project.category}</p><h3>{project.title}</h3><p>{project.description}</p><small>{project.contribution}</small><div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div></div>
-                </article>
-              ))}
-            </div>
-          </section>
 
           <section className="doc-section" id="experience" data-reveal>
             <p className="eyebrow">BACKGROUND</p>
