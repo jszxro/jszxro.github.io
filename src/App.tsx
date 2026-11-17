@@ -1,6 +1,7 @@
 import { type PointerEvent as ReactPointerEvent, useEffect, useRef, useState } from 'react'
 import './App.css'
 import './HomeRefresh.css'
+import HomeShowcase from './pages/HomeShowcase'
 import PortfolioOverview from './pages/PortfolioOverview'
 import { otherProjects as projects, experience } from './data/portfolio'
 import AnbamPage from './pages/AnbamPage'
@@ -149,7 +150,7 @@ function App() {
   }
 
   return (
-    <div className={`site${isOverviewPage ? ' site-overview' : ''}`} id="top">
+    <div className={`site${isOverviewPage ? ' site-overview' : !isProjectDetailPage ? ' editorial-home' : ''}`} id="top">
       <header className="site-header">
         <div className="header-inner">
           <a className="brand" href="#top">seoyoung<span>.log</span></a>
@@ -169,118 +170,13 @@ function App() {
       <main>
         {isOverviewPage ? <PortfolioOverview /> : isGeomatePage ? <GeomatePage /> : isDodamPage ? <DodamPage /> : isProjectreePage ? <ProjectreePage /> : isDitPage ? <DitPage /> : isMoodlogPage ? <MoodlogPage /> : isAnbamPage ? <AnbamPage /> : isSangchuPage ? <SangchuPage /> : (
           <>
-        <section className="page-cover" aria-label="포트폴리오 커버">
-          <button className="cover-theme-toggle" type="button" onClick={() => setTheme((current) => current === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? '다크 모드로 전환' : '라이트 모드로 전환'} aria-pressed={theme === 'dark'} title={theme === 'light' ? '해를 눌러 밤으로' : '달을 눌러 낮으로'}>
-            <span aria-hidden="true">{theme === 'light' ? '☀' : '☾'}</span>
-          </button>
-          {theme === 'light' ? (
-            <>
-              <div className="cover-grid" />
-              <div className="preview-heading"><span>LIVE PREVIEW</span><small>USER-CENTERED FRONTEND</small></div>
-              <div className="site-preview" aria-hidden="true">
-                <div className="preview-browser-bar"><div><i /><i /><i /></div><span>seoyoung.log</span><b>↗</b></div>
-                <div className="preview-page">
-                  <div className="preview-nav"><strong>seoyoung<span>.log</span></strong><nav><i>Work</i><i>About</i><i>Contact</i></nav><em><b /> Available</em></div>
-                  <div className="preview-content">
-                    <section className="preview-copy">
-                      <small>UX-MINDED FRONTEND DEVELOPER</small>
-                      <h3>필요한 경험을 발견하고<br /><strong>직접 구현합니다.</strong></h3>
-                      <p>기획의 의도를 놓치지 않으면서,<br />사용하기 편한 화면을 만듭니다.</p>
-                      <span className="preview-cta">View projects <b>↗</b></span>
-                    </section>
-                    <section className="preview-project">
-                      <div className="preview-project-image"><img src="/images/projects/dodam/dodam-cover.jpg" alt="" /></div>
-                      <div className="preview-project-meta"><small>FEATURED · 01</small><strong>DODAM</strong><span>Planning · UX · Frontend</span></div>
-                    </section>
-                  </div>
-                </div>
-              </div>
-              <div className="preview-pointer" aria-hidden="true">➤<span>seoyoung</span></div>
-              <aside className="cover-workflow" aria-label="작업 흐름">
-                <p>MY WORKFLOW</p>
-                <h3>아이디어를<br /><strong>경험으로 만드는 과정</strong></h3>
-                <div className="workflow-list">
-                  <div><i>01</i><span><b>DISCOVER</b><small>사용자의 문제를 발견합니다.</small></span></div>
-                  <div><i>02</i><span><b>DESIGN</b><small>직관적인 흐름을 설계합니다.</small></span></div>
-                  <div><i>03</i><span><b>BUILD</b><small>실제로 작동하도록 구현합니다.</small></span></div>
-                  <em aria-hidden="true" />
-                </div>
-              </aside>
-              <span className="cover-index" aria-hidden="true">SEOYOUNG · PORTFOLIO 2026</span>
-            </>
-          ) : (
-            <>
-              <div className="star-field" aria-hidden="true">{Array.from({ length: 18 }, (_, index) => <i key={index} />)}</div>
-              <div className="journey-heading"><p>DEVELOPMENT JOURNEY</p><span>2023 — NOW</span></div>
-              <svg className="constellation" viewBox="0 0 1100 310" role="img" aria-label="데이터에서 사용자 경험 중심 프론트엔드까지 이어진 개발 여정">
-                <defs><filter id="theme-glow"><feGaussianBlur stdDeviation="4" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
-                <path className="constellation-guide" d="M110 205 L340 92 L570 190 L790 82 L1000 145" />
-                <path className="constellation-route" d="M110 205 L340 92 L570 190 L790 82 L1000 145" />
-                {[
-                  { x: 110, y: 205, year: '2023', label: 'DATA' },
-                  { x: 340, y: 92, year: '2024', label: 'RESEARCH' },
-                  { x: 570, y: 190, year: '2025', label: 'FULL-STACK' },
-                  { x: 790, y: 82, year: '2026', label: 'SSAFY' },
-                ].map((stop, index) => (
-                  <g className={`milestone milestone-${index + 1}`} transform={`translate(${stop.x} ${stop.y})`} key={stop.year}><circle className="node-halo" r="10" /><circle className="node" r="3.5" /><text className="year" x="0" y="-24" textAnchor="middle">{stop.year}</text><text className="label" x="0" y="31" textAnchor="middle">{stop.label}</text></g>
-                ))}
-                <g className="milestone milestone-now" transform="translate(1000 145)" filter="url(#theme-glow)"><circle className="current-ring" r="11" /><circle className="current-node" r="4" /><text className="year" x="0" y="-27" textAnchor="middle">NOW</text><text className="label" x="0" y="34" textAnchor="middle">UX × FRONTEND</text></g>
-                <circle className="travel-light" r="3" filter="url(#theme-glow)"><animateMotion begin="2s" dur="8s" repeatCount="indefinite" path="M110 205 L340 92 L570 190 L790 82 L1000 145" /></circle>
-              </svg>
-              <span className="constellation-index">SEOYOUNG · PORTFOLIO 2026</span>
-            </>
-          )}
-        </section>
-
         <article className="document">
-          <section className="home-hero">
-            <div className="hero-copy">
-              <div className="page-icon" aria-hidden="true">S<span>Y</span></div>
-              <p className="breadcrumb">JEONG SEOYOUNG · PORTFOLIO</p>
-              <h1>기획과 구현 사이를<br /><strong>연결합니다.</strong> <span className="wave">✦</span></h1>
-              <p className="subtitle">사용자가 서비스를 이용하는 모든 순간을 고민하고,<br />더 직관적이고 편리한 경험으로 구현합니다.</p>
-              <div className="hero-tags"><span>Product Planning</span><span>Frontend</span><span>Full-stack</span></div>
-            </div>
-
-            <aside className="hero-profile-card" aria-label="정서영 프로필 요약">
-              <button ref={profileTriggerRef} className="profile-card-trigger" type="button" onClick={() => setIsProfileOpen(true)} aria-haspopup="dialog" aria-label="정서영 상세 프로필 열기" title="상세 프로필 보기" />
-              <div className="profile-top"><img className="profile-photo" src="/images/profile/profile.png" alt="정서영 프로필 사진" /><span className="profile-status"><i /> Available</span></div>
-              <p className="profile-label">PROFILE</p><h2>정서영</h2><p className="profile-role">기획과 구현을 연결하는<br />프론트엔드 개발자</p>
-              <dl><div><dt>Based in</dt><dd>Gumi, Korea</dd></div><div><dt>Focus</dt><dd>React · UX · Product</dd></div></dl>
-              <div className="profile-actions"><a href="mailto:jszxro@naver.com">Email ↗</a><a href="https://github.com/jszxro" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-              <span className="profile-open-hint" aria-hidden="true">자세히 보기 +</span>
-            </aside>
-          </section>
-
-          <section className="doc-section about" id="about" data-reveal>
-            <h2><span aria-hidden="true">👋</span> About me</h2>
-            <p className="lead">사용자의 문제를 발견하고, 직관적인 경험으로 풀어냅니다.</p>
-            <p>좋은 서비스는 사용자의 상황을 세심하게 이해하는 데서 시작한다고 생각합니다. 복잡한 정보와 선택지를 그대로 보여주기보다, 사용자가 자신의 상황을 이해하고 스스로 더 나은 결정을 내릴 수 있도록 화면과 흐름을 설계합니다.</p>
-            <aside className="callout"><span aria-hidden="true">✦</span><p><strong>이해에서 더 나은 선택까지</strong><br />사용자의 눈높이에서 정보를 풀어내고, 필요한 판단 기준이 자연스럽게 보이는 경험을 만듭니다.</p></aside>
-          </section>
-
-          <section className="doc-section" id="projects" data-reveal>
-            <div className="section-title-row">
-              <div><p className="eyebrow">SELECTED WORK</p><h2><span aria-hidden="true">📌</span> Featured project</h2></div>
-              <span className="count">01 / 07</span>
-            </div>
-            <article className="featured-project">
-              <a className="featured-card-hitarea" href="#/projects/geomate" aria-label="지오메이트 프로젝트 상세 페이지 보기" />
-              <ImagePlaceholder label="Geomate" src="/images/projects/geomate/geomate-cover.png" />
-              <div className="featured-body">
-                <p className="project-meta">FEATURED · TABLET LEARNING APP</p>
-                <h3>Geomate</h3>
-                <p>사진 속 도형 문제를 직접 움직이는 학습 공간으로 연결하고, 예측부터 진단·힌트·확인·기록까지 이어가는 태블릿 학습 서비스입니다.</p>
-                <dl><div><dt>My role</dt><dd>프론트엔드 · UI/UX · API 연동 · 실기기 QA</dd></div><div><dt>Stack</dt><dd>React Native · Expo · TypeScript · TanStack Query · Zustand</dd></div></dl>
-                <a href="#/projects/geomate">프로젝트 자세히 보기 <span>→</span></a>
-              </div>
-            </article>
-          </section>
+          <HomeShowcase onProfile={() => setIsProfileOpen(true)} onTheme={() => setTheme(current => current === 'light' ? 'dark' : 'light')} theme={theme} />
 
           <section className="doc-section archive" data-reveal>
-            <div className="section-title-row"><div><p className="eyebrow">ARCHIVE</p><h2><span aria-hidden="true">🗂️</span> More projects</h2></div></div>
+            <div className="section-title-row"><div><p className="eyebrow">ARCHIVE</p><h2>All projects</h2></div></div>
             <div className="project-grid">
-              {projects.map((project) => (
+              {[{ title: 'Geomate', category: 'Frontend / Tablet Learning', description: '도형을 직접 움직이며 탐구하는 태블릿 학습 서비스', contribution: 'Frontend / UI UX / API / QA', stack: ['React Native', 'TypeScript', 'Expo'], cover: '/images/projects/geomate/geomate-cover.png', tone: 'blue', href: '#/projects/geomate' }, ...projects].map((project) => (
                 <article className="project-card" key={project.title}>
                   {project.href && <a className="project-card-hitarea" href={project.href} aria-label={`${project.title} 프로젝트 상세 페이지 보기`} />}
                   <div className={`card-image ${project.tone}`}><ImagePlaceholder label={project.title} src={project.cover} /></div>
