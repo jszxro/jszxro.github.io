@@ -42,8 +42,8 @@ export const otherProjects = [
 ]
 
 export const experience = [
-  { period: '2026 — Present', title: '삼성청년SW·AI아카데미', detail: 'SSAFY' },
+  { period: '2026 — Present', title: '삼성청년SW·AI아카데미', detail: 'SSAFY · 특화 프로젝트 우수상' },
   { period: '2025', title: '빅데이터를 활용한 자바 개발자 과정', detail: '960시간' },
   { period: '2024 — 2025', title: '학부 연구생', detail: '데이터 수집·분석 및 시각화' },
-  { period: '2023', title: '데이터 사이언스 부트캠프', detail: 'DSBA' },
+  { period: '2023', title: '디지털 스마트 부산 아카데미 3기', detail: 'DSBA · 표창장 수상' },
 ]

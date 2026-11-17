@@ -1,9 +1,9 @@
 import { type PointerEvent as ReactPointerEvent, useEffect, useRef, useState } from 'react'
 import './App.css'
 import './HomeRefresh.css'
+import ExperienceSection from './pages/ExperienceSection'
 import HomeShowcase from './pages/HomeShowcase'
 import PortfolioOverview from './pages/PortfolioOverview'
-import { experience } from './data/portfolio'
 import DodamPage from './pages/DodamPage'
 import GeomatePage from './pages/GeomatePage'
 import DitPage from './pages/DitPage'
@@ -157,11 +157,7 @@ function App() {
         <article className="document">
           <HomeShowcase onProfile={() => setIsProfileOpen(true)} onTheme={() => setTheme(current => current === 'light' ? 'dark' : 'light')} theme={theme} />
 
-          <section className="doc-section" id="experience" data-reveal>
-            <p className="eyebrow">BACKGROUND</p>
-            <h2><span aria-hidden="true">🕐</span> Experience</h2>
-            <div className="timeline">{experience.map((item) => <article key={item.title}><time>{item.period}</time><div><h3>{item.title}</h3><p>{item.detail}</p></div></article>)}</div>
-          </section>
+          <ExperienceSection />
 
           <section className="doc-section toolbox" data-reveal>
             <p className="eyebrow">TOOLBOX</p>
