@@ -1,0 +1,64 @@
+.skills-studio{padding:65px 0 80px;border-top:1px solid var(--line);color:var(--text)}
+.skills-studio-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:35px}
+.skills-studio-heading>div>span{font-size:9px;letter-spacing:.16em;color:var(--muted)}
+.skills-studio-heading h2{margin:15px 0 0;font-size:34px;font-weight:600;letter-spacing:-.045em;line-height:1.2}
+.skills-studio-heading>p{font-size:11px;color:var(--muted);margin:0 0 4px}
+.toolset-grid{display:flex;flex-direction:column}
+.toolset{display:grid;grid-template-columns:205px minmax(0,1fr);gap:20px 28px;padding:27px 0;border-bottom:1px solid var(--line)}
+.toolset:first-child{border-top:1px solid var(--line)}
+.toolset-top{display:none}
+.toolset-title{padding-top:13px}
+.toolset-title h3{font-size:18px;font-weight:500;letter-spacing:-.035em;margin:0}
+.toolset-title p{font-size:10px;color:var(--muted);margin:8px 0 0}
+.toolset-items{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:0;margin:0;list-style:none}
+.toolset-items li{display:inline-flex;align-items:center;gap:10px;padding:10px 14px 10px 11px;background:var(--surface);border:1px solid var(--line);border-radius:9px;box-shadow:0 3px 7px #223e5205;font-size:12px;line-height:1.4;color:var(--text);transition:transform .2s,box-shadow .2s,border-color .2s}
+.skill-logo{width:27px;height:29px;display:grid;place-items:center;flex-shrink:0}
+.skill-logo svg{width:26px;height:26px;display:block}
+.site-footer.contact-studio{padding:36px 0 28px;background:var(--bg);color:var(--text);scroll-margin-top:85px}
+.contact-studio-inner{width:min(1200px,calc(100% - 80px));margin:auto}
+.contact-colophon{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:23px;margin-top:16px;font-size:9px;color:var(--muted)}
+.contact-colophon a{color:inherit;text-decoration:none}
+.contact-colophon a>span{margin-left:14px}
+.contact-studio a:focus-visible{outline:2px solid #87a8c2;outline-offset:6px;border-radius:4px}
+@media(hover:hover) and (pointer:fine){
+.toolset-items li:hover{transform:translateY(-3px);border-color:#bcd4e5;box-shadow:0 6px 12px #46789c12}
+}
+@media(max-width:720px){
+.toolset{grid-template-columns:1fr;gap:18px;padding:22px 0}
+.toolset-title{padding:0;display:flex;align-items:baseline;gap:15px}
+.toolset-title p{margin:0}.toolset-title h3{font-size:17px}
+.toolset-items{gap:8px}.toolset-items li{font-size:11px;padding:9px 11px;gap:8px}
+.skill-logo,.skill-logo svg{width:23px;height:25px}
+.contact-studio-inner{width:calc(100% - 40px)}
+.contact-colophon{font-size:8px}.contact-colophon>span:nth-child(2){display:none}
+}
+@media(max-width:480px){
+.skills-studio{padding:45px 0 50px}.skills-studio-heading{display:block;margin-bottom:26px}
+.skills-studio-heading h2{font-size:29px}.skills-studio-heading>p{margin-top:15px;font-size:10px}
+}
+@media(hover:hover) and (pointer:fine){.contact-addresses a:hover .contact-link-arrow{transform:translate(3px,-3px);color:var(--text)}}
+/* A full-width typographic finish, open to the page rather than enclosed in a card. */
+.site-footer.contact-studio{position:relative;isolation:isolate;overflow:hidden;padding:68px 0 28px;background:var(--bg)}
+.site-footer.contact-studio::before{content:'';position:absolute;z-index:-1;pointer-events:none;width:120%;height:650px;left:8%;bottom:-390px;border-radius:50%;background:linear-gradient(110deg,#dceefa,#e3e8f8 55%,#f0e9f5);filter:blur(55px);opacity:.85}
+.contact-finale{padding:28px 0 32px;border-top:1px solid var(--line)}
+.contact-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.contact-label{font-size:9px;letter-spacing:.16em;color:var(--muted)}
+.contact-signature{display:flex;align-items:baseline;gap:12px;font-size:11px;color:var(--text)}
+.contact-signature>span{font-size:9px;color:var(--muted)}
+.contact-finale .contact-wordmark{margin:30px 0 28px;font-size:clamp(64px,10.4vw,134px);font-weight:500;letter-spacing:-.065em;line-height:1;color:var(--text)}
+.contact-wordmark>span{color:#9bb5d3}
+.contact-primary{display:grid;grid-template-columns:95px 1fr 46px;align-items:center;gap:20px;padding:23px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--text);text-decoration:none}
+.contact-email-caption{font-size:9px;letter-spacing:.12em;color:var(--muted)}
+.contact-email-value{font-size:clamp(21px,2.5vw,30px);font-weight:500;letter-spacing:-.025em;transition:color .25s}
+.contact-email-domain{font-weight:400;color:#8293a7;transition:color .25s}
+.contact-send{display:grid;place-items:center;width:44px;height:44px;border:1px solid #b6cbe0;border-radius:50%;background:#eaf2fb70;color:#6689ad;transition:transform .3s,background .3s,border-color .3s}
+.contact-send svg{width:26px;height:26px;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.contact-github{display:flex;align-items:center;gap:9px;width:fit-content;margin:24px 0 0 auto;text-decoration:none;font-size:11px;color:var(--text)}
+.contact-github svg{width:15px;height:15px;opacity:.65}
+.contact-github>span{margin-left:20px;color:var(--muted);transition:transform .25s}
+.contact-colophon{border-top:0;padding-top:24px;margin-top:0}
+html[data-theme='dark'] .site-footer.contact-studio::before{opacity:.08}
+html[data-theme='dark'] .contact-send{background:#233448;border-color:#496178;color:#b5cde6}
+@media(hover:hover) and (pointer:fine){.contact-primary:hover .contact-send{transform:rotate(45deg);background:#dceafa;border-color:#9fb9d6}.contact-primary:hover .contact-email-value{color:#6485a8}.contact-github:hover>span{transform:translate(2px,-2px)}}
+@media(max-width:720px){.site-footer.contact-studio{padding-top:36px}.contact-finale{padding-top:22px}.contact-signature{font-size:10px}.contact-signature>span{display:none}.contact-finale .contact-wordmark{font-size:clamp(60px,15vw,96px);margin:28px 0 25px}.contact-primary{grid-template-columns:1fr 42px;gap:9px 10px;padding:21px 0}.contact-email-caption{grid-column:1;font-size:8px}.contact-email-value{grid-column:1;font-size:clamp(19px,5.2vw,27px)}.contact-send{grid-column:2;grid-row:1/3;width:40px;height:40px}.contact-send svg{width:21px;height:21px}.contact-github{margin-top:20px}.site-footer.contact-studio::before{bottom:-460px;left:-20%;width:170%}}
+@media(prefers-reduced-motion:reduce){.contact-send,.contact-email-value,.contact-email-domain,.contact-github>span,.toolset-items li{transition:none}}

@@ -2,6 +2,7 @@ import { type PointerEvent as ReactPointerEvent, useEffect, useRef, useState } f
 import './App.css'
 import './HomeRefresh.css'
 import ExperienceSection from './pages/ExperienceSection'
+import { SkillsSection, ContactFooter } from './pages/SkillsContact'
 import HomeShowcase from './pages/HomeShowcase'
 import PortfolioOverview from './pages/PortfolioOverview'
 import DodamPage from './pages/DodamPage'
@@ -159,11 +160,7 @@ function App() {
 
           <ExperienceSection />
 
-          <section className="doc-section toolbox" data-reveal>
-            <p className="eyebrow">TOOLBOX</p>
-            <h2><span aria-hidden="true">🧰</span> Skills & tools</h2>
-            <div className="skill-table"><div><strong>Frontend</strong><p>React · Vue · TypeScript · JavaScript · HTML/CSS</p></div><div><strong>Backend</strong><p>Spring Boot · Django REST · JPA · WebSocket</p></div><div><strong>Data & Infra</strong><p>MySQL · Oracle · Redis · AWS · Docker</p></div><div><strong>Product</strong><p>Figma · 요구사항 분석 · 사용자 흐름 · 화면 설계</p></div></div>
-          </section>
+          <SkillsSection />
         </article>
           </>
         )}
@@ -196,9 +193,7 @@ function App() {
         </div>
       )}
 
-      <footer id="contact" className="site-footer">
-        <div className="footer-inner"><p className="eyebrow">CONTACT</p><h2>함께 만들고 싶은<br />이야기가 있다면.</h2><a href="mailto:jszxro@naver.com">jszxro@naver.com <span>↗</span></a><div className="footer-meta"><span>© 2026 SEOYOUNG</span><span>React · TypeScript · Vite</span><a href="#top">Back to top ↑</a></div></div>
-      </footer>
+      <ContactFooter />
     </div>
   )
 }
