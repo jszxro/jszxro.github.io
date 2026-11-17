@@ -25,10 +25,10 @@ export default function HomeShowcase({ onProfile, onTheme, theme }: { onProfile:
   const positionRef = useRef(0)
   const momentumFrame = useRef(0)
   const [coasting, setCoasting] = useState(false)
-  const [settled, setSettled] = useState(false)
+  const [settledPosition, setSettledPosition] = useState<number | null>(null)
   const count = galleryProjects.length
   const activeProject = ((Math.round(position) % count) + count) % count
-  const moveTo = (next: number) => { positionRef.current = next; setPosition(next) }
+  const moveTo = (next: number) => { if (next !== positionRef.current) setSettledPosition(null); positionRef.current = next; setPosition(next) }
   const setActiveProject = (next: number | ((value: number) => number)) => {
     cancelAnimationFrame(momentumFrame.current)
     setCoasting(false)
@@ -39,23 +39,23 @@ export default function HomeShowcase({ onProfile, onTheme, theme }: { onProfile:
   const [hovered, setHovered] = useState(false)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [dragging, setDragging] = useState(false)
+  const settled = settledPosition === position && !dragging && !coasting
   const drag = useRef<{ id: number; x: number; time: number; velocity: number; moved: boolean; step: number } | null>(null)
   const suppressClick = useRef(false)
   useEffect(() => {
     if (dragging || coasting) return
-    const timer = window.setTimeout(() => setSettled(true), 650)
+    const timer = window.setTimeout(() => setSettledPosition(position), 650)
     return () => window.clearTimeout(timer)
-  }, [activeProject, dragging, coasting])
-  useEffect(() => { setSettled(false) }, [activeProject, dragging, coasting])
+  }, [position, dragging, coasting])
   useEffect(() => () => cancelAnimationFrame(momentumFrame.current), [])
-  const releaseDrag = (cancelled = false) => {
+  const releaseDrag = (now: number, cancelled = false) => {
     const gesture = drag.current
     suppressClick.current = Boolean(gesture?.moved)
     drag.current = null
     setDragging(false)
     if (!gesture?.moved) return
-    let velocity = cancelled || reducedMotion || performance.now() - gesture.time > 120 ? 0 : gesture.velocity
-    let previous = performance.now()
+    let velocity = cancelled || reducedMotion || now - gesture.time > 120 ? 0 : gesture.velocity
+    let previous = now
     setCoasting(true)
     const coast = (now: number) => {
       const elapsed = Math.min(now - previous, 32)
@@ -77,7 +77,7 @@ export default function HomeShowcase({ onProfile, onTheme, theme }: { onProfile:
   }, [])
   useEffect(() => {
     if (paused || hovered || reducedMotion || dragging || coasting) return
-    const timer = window.setTimeout(() => { const next = Math.round(positionRef.current) + 1; positionRef.current = next; setPosition(next) }, 2200)
+    const timer = window.setTimeout(() => { const next = Math.round(positionRef.current) + 1; setSettledPosition(null); positionRef.current = next; setPosition(next) }, 2200)
     return () => window.clearTimeout(timer)
   }, [activeProject, paused, hovered, reducedMotion, dragging, coasting])
   const currentProject = galleryProjects[activeProject]
@@ -98,7 +98,7 @@ export default function HomeShowcase({ onProfile, onTheme, theme }: { onProfile:
           setCoasting(false)
           const viewport = window.innerWidth
           const step = viewport <= 720 ? viewport * .83 : Math.max(320, Math.min(viewport * .41, 640))
-          drag.current = { id: event.pointerId, x: event.clientX, time: performance.now(), velocity: 0, moved: false, step }
+          drag.current = { id: event.pointerId, x: event.clientX, time: event.timeStamp, velocity: 0, moved: false, step }
         }}
         onPointerMove={event => {
           const gesture = drag.current
@@ -111,15 +111,15 @@ export default function HomeShowcase({ onProfile, onTheme, theme }: { onProfile:
             setDragging(true)
           }
           gesture.x = event.clientX
-          const now = performance.now()
+          const now = event.timeStamp
           const speed = delta / gesture.step / Math.max(now - gesture.time, 8)
           gesture.velocity = Math.max(-.025, Math.min(.025, gesture.velocity * .25 + speed * .75))
           gesture.time = now
           moveTo(positionRef.current + delta / gesture.step)
         }}
-        onPointerUp={() => releaseDrag()}
-        onPointerCancel={() => releaseDrag(true)}
-        onLostPointerCapture={() => { if (drag.current) releaseDrag(true) }}
+        onPointerUp={event => releaseDrag(event.timeStamp)}
+        onPointerCancel={event => releaseDrag(event.timeStamp, true)}
+        onLostPointerCapture={event => { if (drag.current) releaseDrag(event.timeStamp, true) }}
         onClickCapture={event => { if (suppressClick.current) { event.preventDefault(); event.stopPropagation(); suppressClick.current = false } }}
         onDragStart={event => event.preventDefault()}>
         <div className="single-phone-halo" aria-hidden="true" />
