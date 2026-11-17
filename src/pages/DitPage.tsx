@@ -1,4 +1,5 @@
 import './DitPage.css'
+import { ProjectDetailHero, ProjectVisualStory } from './ProjectDetailVisual'
 
 const journey = [
   ['01', 'UNDERSTAND', 'DBTI와 프로필로 개발 성향과 현재 경험을 확인합니다.'],
@@ -27,35 +28,8 @@ function scrollToSection(id: string) {
 
 function DitPage() {
   return (
-    <article className="dit-page">
-      <section className="dit-hero">
-        <div className="dit-container">
-          <a className="dit-back" href="#projects">← Projects</a>
-          <div className="dit-hero-grid">
-            <div>
-              <p className="dit-kicker">AI PROJECT RECOMMENDATION · WEB</p>
-              <h1>Dit<span>딧</span></h1>
-              <p className="dit-summary">개발자의 성향과 경험을 분석해, 지금 만들기 좋은 프로젝트를 구체적인 기획안까지 제안하는 서비스</p>
-            </div>
-            <div className="dit-properties">
-              <dl>
-                <div><dt>PERIOD</dt><dd>2026.06.16 — 2026.06.25</dd></div>
-                <div><dt>ROLE</dt><dd>Full-stack · UX Flow · AI Integration</dd></div>
-                <div><dt>TEAM</dt><dd>SSAFY 프로젝트 · 2인 팀</dd></div>
-                <div><dt>STACK</dt><dd>Vue 3 · JavaScript · Pinia · Django REST Framework · OpenAI API</dd></div>
-              </dl>
-              <div className="dit-links">
-                <a href="https://www.figma.com/design/TI5BRliQ3FlMklHJ0buURt/Dit-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?t=mXHWJPnA3wBWy783-1" target="_blank" rel="noreferrer">Figma ↗</a>
-                <a href="https://github.com/jszxro/Dit" target="_blank" rel="noreferrer">GitHub ↗</a>
-              </div>
-            </div>
-          </div>
-          <figure className="dit-cover">
-            <img src="/images/projects/dit/dit-cover.png" alt="Dit 프로젝트 대표 화면" />
-            <figcaption><b>01</b><span>성향을 진단하는 데서 멈추지 않고, 시작할 수 있는 프로젝트로 연결합니다.</span></figcaption>
-          </figure>
-        </div>
-      </section>
+    <article className="dit-page detail-project">
+      <ProjectDetailHero project="dit" />
 
       <nav className="dit-section-nav" aria-label="Dit 상세 페이지 목차">
         <button type="button" onClick={() => scrollToSection('dit-situation')}>Situation</button>
@@ -65,6 +39,7 @@ function DitPage() {
         <button type="button" onClick={() => scrollToSection('dit-troubleshooting')}>Troubleshooting</button>
         <button type="button" onClick={() => scrollToSection('dit-result')}>Result</button>
       </nav>
+      <ProjectVisualStory project="dit" />
 
       <div className="dit-container">
         <section className="dit-section" id="dit-situation">
@@ -92,7 +67,7 @@ function DitPage() {
           <div className="dit-contribution-list">
             {contributions.map(([label, title, description]) => <article key={label}><span>{label}</span><h3>{title}</h3><p>{description}</p></article>)}
           </div>
-          <div className="dit-stack"><b>FRONTEND</b><p>Vue 3 · JavaScript · Vite · Pinia · Vue Router · Axios · Bootstrap 5</p><b>BACKEND &amp; AI</b><p>Python · Django · Django REST Framework · DRF Token Authentication · SQLite · OpenAI-compatible API</p></div>
+
         </section>
 
         <section className="dit-section" id="dit-decisions">

@@ -1,4 +1,5 @@
 import './SangchuPage.css'
+import { ProjectDetailHero, ProjectVisualStory } from './ProjectDetailVisual'
 
 const journey = [
   ['01', 'EXPLORE', '부산 전체 상권 지표를 살펴봅니다.'],
@@ -48,36 +49,8 @@ function scrollToSection(id: string) {
 
 function SangchuPage() {
   return (
-    <article className="sangchu-page">
-      <section className="sangchu-hero">
-        <div className="sangchu-container">
-          <a className="sangchu-back" href="#projects">← Projects</a>
-          <div className="sangchu-hero-grid">
-            <div className="sangchu-title-block">
-              <p className="sangchu-kicker">COMMERCIAL DATA · ML INTEGRATION</p>
-              <h1>Sangchu<span>상추</span></h1>
-              <p className="sangchu-summary">부산의 상권 데이터를 지역별로 비교하고, 상가 조건에 따른 예상 월세까지 확인할 수 있도록 분석과 매물 탐색을 연결한 서비스</p>
-            </div>
-            <div className="sangchu-properties">
-              <dl>
-                <div><dt>PERIOD</dt><dd>2023.11.09 — 2023.12.29</dd></div>
-                <div><dt>ROLE</dt><dd>Data Analysis · ML Integration · Django</dd></div>
-                <div><dt>TEAM</dt><dd>6인 팀 프로젝트</dd></div>
-                <div><dt>STACK</dt><dd>Python · Django · Pandas · scikit-learn · JavaScript · Highcharts</dd></div>
-              </dl>
-              <div className="sangchu-links">
-                <a href="https://github.com/offensivesoup/Sangchu_Final_PJT" target="_blank" rel="noreferrer">GitHub ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <figure className="sangchu-cover">
-            <div className="sangchu-cover-bar"><span><i /><i /><i /></span><small>sangchu · commercial insight</small><b>BUSAN</b></div>
-            <img src="/images/projects/sangchu/sangchu-cover.png" alt="상추 부산 상권 분석 및 매물 추천 서비스 대표 화면" />
-            <figcaption><b>PROJECT OVERVIEW</b><span>지역 데이터를 읽는 단계에서 끝내지 않고 매물 탐색과 월세 예측까지 이어, 사용자가 상가 조건을 비교할 수 있는 흐름을 만들었습니다.</span></figcaption>
-          </figure>
-        </div>
-      </section>
+    <article className="sangchu-page detail-project">
+      <ProjectDetailHero project="sangchu" />
 
       <nav className="sangchu-section-nav" aria-label="상추 상세 페이지 목차">
         <button type="button" onClick={() => scrollToSection('sangchu-situation')}>Situation</button>
@@ -87,6 +60,7 @@ function SangchuPage() {
         <button type="button" onClick={() => scrollToSection('sangchu-troubleshooting')}>Troubleshooting</button>
         <button type="button" onClick={() => scrollToSection('sangchu-result')}>Result</button>
       </nav>
+      <ProjectVisualStory project="sangchu" />
 
       <div className="sangchu-container">
         <section className="sangchu-section" id="sangchu-situation">
@@ -120,10 +94,7 @@ function SangchuPage() {
           <div className="sangchu-contribution-list">
             {contributions.map(([label, title, description]) => <article key={label}><span>{label}</span><h3>{title}</h3><p>{description}</p></article>)}
           </div>
-          <div className="sangchu-stack">
-            <b>MY STACK</b><p>Python · Django · Pandas · NumPy · scikit-learn · JavaScript</p>
-            <b>SERVICE STACK</b><p>Django · Highcharts · Kakao Map API · Bootstrap · jQuery</p>
-          </div>
+
         </section>
 
         <section className="sangchu-section" id="sangchu-features">

@@ -1,4 +1,5 @@
 import './GeomatePage.css'
+import { ProjectDetailHero, ProjectVisualStory } from './ProjectDetailVisual'
 
 const storeUrl = 'https://m.onestore.co.kr/v2/ko-kr/app/0001012470'
 const imageRoot = '/images/projects/geomate'
@@ -28,34 +29,18 @@ function scrollTo(id: string) {
 }
 
 export default function GeomatePage() {
-  return <article className="geomate-page">
-    <header className="geomate-hero">
-      <div className="geomate-container">
-        <a className="geomate-back" href="#projects">← Projects</a>
-        <div className="geomate-hero-info">
-          <div>
-            <p className="geomate-kicker">TABLET APP · INTERACTIVE GEOMETRY</p>
-            <h1><span className="geomate-sr-only">Geomate · 지오메이트</span><img src={`${imageRoot}/geomate-logo.png`} alt="" width="480" height="144" /></h1>
-            <p className="geomate-summary">종이 위의 도형 문제를,<br /><strong>직접 움직이며 이해하는 학습으로.</strong></p>
-            <p className="geomate-hero-description">사진 속 문제를 도형 학습 공간으로 연결하고,<br />예측·진단·힌트·확인·기록까지 이어가는 태블릿 앱</p>
-          </div>
-          <div className="geomate-properties">
-            <dl><div><dt>PERIOD</dt><dd>2026.10 — 2026.11</dd></div><div><dt>MY ROLE</dt><dd>Frontend · UI/UX · API Integration</dd></div><div><dt>TEAM</dt><dd>SSAFY 자율 프로젝트 · D103 · 6명</dd></div><div><dt>PLATFORM</dt><dd>Android · 가로형 태블릿</dd></div></dl>
-            <a className="geomate-store" href={storeUrl} target="_blank" rel="noopener noreferrer">원스토어에서 앱 보기 <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-        <div className="geomate-hero-stage"><div className="geomate-stage-caption"><span>DESIGNED FOR TABLETS</span><span>문제와 생각을 함께 펼치는 화면</span></div><Tablet screen="workspace" label="지오메이트 실제 앱의 도형 조작·필기 학습 공간" priority /></div>
-      </div>
-    </header>
+  return <article className="geomate-page detail-project">
+    <ProjectDetailHero project="geomate" />
 
-    <nav className="geomate-nav" aria-label="지오메이트 프로젝트 목차">{[['overview', 'Situation'], ['planning', 'Task'], ['role', 'Action'], ['features', 'Features'], ['troubleshooting', 'Troubleshooting'], ['result', 'Result']].map(([id, title]) => <button key={id} type="button" onClick={() => scrollTo(`geomate-${id}`)}>{title}</button>)}</nav>
+      <nav className="geomate-nav" aria-label="지오메이트 프로젝트 목차">{[['overview', 'Situation'], ['planning', 'Task'], ['role', 'Action'], ['features', 'Features'], ['troubleshooting', 'Troubleshooting'], ['result', 'Result']].map(([id, title]) => <button key={id} type="button" onClick={() => scrollTo(`geomate-${id}`)}>{title}</button>)}</nav>
+      <ProjectVisualStory project="geomate" />
 
     <div className="geomate-container geomate-content">
       <section className="geomate-section" id="geomate-overview"><div className="geomate-heading"><p>01 · SITUATION</p><h2>종이에 그려진 도형은<br />직접 확인할 수 없었습니다.</h2></div><div className="geomate-prose"><p>입체도형 문제에서는 머릿속으로 회전하거나 잘린 면과 전개도를 상상해야 합니다. 해설을 읽는 것만으로는 내가 어떤 부분을 잘못 예상했는지 확인하기 어렵습니다.</p><p>지오메이트는 정답을 바로 보여주는 대신, <strong>학생의 예측을 실제 도형 조작과 비교하는 학습 경험</strong>을 목표로 합니다. 문제 사진에서 시작해 도형을 다루고, 자신의 답과 힌트를 확인하며 다시 생각하도록 구성했습니다.</p><blockquote>문제를 읽는 화면에서 끝나지 않고,<br /><strong>내 생각을 확인할 수 있는 학습 공간으로 연결하기.</strong></blockquote></div></section>
 
       <section className="geomate-section" id="geomate-planning"><div className="geomate-heading"><p>02 · TASK</p><h2>기능 사이의 이동이<br />학습의 단절이 되지 않도록</h2></div><div className="geomate-prose"><p>프론트엔드의 과제는 3D 도형을 보여주는 데서 끝나지 않았습니다. 사진 등록과 해석 대기, 조건 확인, 학습 시작과 저장·복귀를 서로 다른 서버 상태에 맞춰 연결해야 했습니다.</p><div className="geomate-journey">{['문제 가져오기', '원본·조건 확인', '예측·조작', '진단·확인', '저장·복습'].map((title, index) => <div key={title}><span>{String(index + 1).padStart(2, '0')}</span><strong>{title}</strong></div>)}</div></div></section>
 
-      <section className="geomate-section" id="geomate-role"><div className="geomate-heading"><p>03 · ACTION / MY CONTRIBUTION</p><h2>학생의 진입부터 복귀까지,<br />화면과 상태를 연결했습니다.</h2></div><div className="geomate-role-grid"><article><span>SCREEN & INTERACTION</span><h3>태블릿의 화면과 입력 경험</h3><p>로그인·온보딩과 학생 홈, 문제 등록·문제함·조건 확인·설정 등 주요 화면을 구현하고, 학습 공간의 패널·필기·제출 UI를 개선했습니다.</p></article><article><span>API & SESSION</span><h3>서버 상태에 맞춘 다음 행동</h3><p>해석 작업 조회와 재시도, 예제·퀘스트 진입, 폴더·문제 관리 등 API를 연결하고 계정·세션 변경 시 늦은 응답과 캐시가 섞이지 않도록 방어했습니다.</p></article><article><span>COMPONENT SYSTEM</span><h3>페이지마다 달랐던 기준 통합</h3><p>반복되는 모달·버튼·로딩·오류 표시를 공통 구조로 정리하고, 스타일 토큰과 입력 컴포넌트로 화면 사이의 일관성을 보완했습니다.</p></article><article><span>QA & DELIVERY</span><h3>실기기에서 이어지는 사용 흐름</h3><p>Android 태블릿과 APK에서 키보드·화면 배치·이동·학습 복원을 확인하고, QA에서 발견한 예외 상태를 수정했습니다.</p></article></div><div className="geomate-stack" aria-label="담당 프론트엔드 기술">{['React Native', 'Expo', 'TypeScript', 'Expo Router', 'TanStack Query', 'Zustand', 'Reanimated'].map(name => <span key={name}>{name}</span>)}</div></section>
+      <section className="geomate-section" id="geomate-role"><div className="geomate-heading"><p>03 · ACTION / MY CONTRIBUTION</p><h2>학생의 진입부터 복귀까지,<br />화면과 상태를 연결했습니다.</h2></div><div className="geomate-role-grid"><article><span>SCREEN & INTERACTION</span><h3>태블릿의 화면과 입력 경험</h3><p>로그인·온보딩과 학생 홈, 문제 등록·문제함·조건 확인·설정 등 주요 화면을 구현하고, 학습 공간의 패널·필기·제출 UI를 개선했습니다.</p></article><article><span>API & SESSION</span><h3>서버 상태에 맞춘 다음 행동</h3><p>해석 작업 조회와 재시도, 예제·퀘스트 진입, 폴더·문제 관리 등 API를 연결하고 계정·세션 변경 시 늦은 응답과 캐시가 섞이지 않도록 방어했습니다.</p></article><article><span>COMPONENT SYSTEM</span><h3>페이지마다 달랐던 기준 통합</h3><p>반복되는 모달·버튼·로딩·오류 표시를 공통 구조로 정리하고, 스타일 토큰과 입력 컴포넌트로 화면 사이의 일관성을 보완했습니다.</p></article><article><span>QA & DELIVERY</span><h3>실기기에서 이어지는 사용 흐름</h3><p>Android 태블릿과 APK에서 키보드·화면 배치·이동·학습 복원을 확인하고, QA에서 발견한 예외 상태를 수정했습니다.</p></article></div></section>
 
       <section className="geomate-features" id="geomate-features"><div className="geomate-heading"><p>04 · ACTION / KEY FEATURES</p><h2>실제 태블릿 화면으로 보는<br />지오메이트의 학습 흐름</h2></div><p className="geomate-feature-intro">Android 에뮬레이터에서 직접 캡처한 실행 화면입니다. 가로 화면 안에서 문제를 읽고, 도형을 조작하고, 다음 학습으로 돌아오는 과정을 담았습니다.</p><div className="geomate-feature-list">{features.map(feature => <article key={feature.id}><div className="geomate-feature-screen"><Tablet screen={feature.screen} label={`${feature.title.replace('\n', ' ')} 실제 앱 화면`} /></div><div className="geomate-feature-copy"><p className="geomate-kicker">{feature.id} / {feature.label}</p><h3>{feature.title.split('\n').map((line, i) => <span key={line}>{i > 0 && <br />}{line}</span>)}</h3><p>{feature.description}</p><aside><b>UX / IMPLEMENTATION</b><p>{feature.decision}</p></aside></div></article>)}</div></section>
 

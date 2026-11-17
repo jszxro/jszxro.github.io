@@ -1,4 +1,5 @@
 import './DodamPage.css'
+import { ProjectDetailHero, ProjectVisualStory } from './ProjectDetailVisual'
 
 const journey = [
   ['01', 'CONNECT', '흩어진 금융 데이터를 하나의 맥락으로 묶습니다.'],
@@ -30,39 +31,8 @@ function scrollToSection(id: string) {
 
 function DodamPage() {
   return (
-    <article className="dodam-page">
-      <section className="dodam-hero">
-        <div className="dodam-hero-inner">
-          <div className="dodam-hero-copy">
-            <a className="dodam-back" href="#projects">← Projects</a>
-            <div className="dodam-hero-info">
-              <div className="dodam-title-block">
-                <p className="dodam-kicker">FEATURED PROJECT · MOBILE FINTECH</p>
-                <h1>Dodam<span>도담</span></h1>
-                <p className="dodam-summary">흩어진 금융 데이터를 판단 기준으로 바꿔,<br />현재 상태의 해석부터 다음 행동까지 잇는 금융 코칭 서비스</p>
-              </div>
-              <div className="dodam-property-panel">
-                <div className="dodam-meta">
-                  <div><small>PERIOD</small><strong>2026.08 — 2026.09</strong></div>
-                  <div><small>ROLE</small><strong>Frontend · UX Flow · API Integration</strong></div>
-                  <div><small>TEAM</small><strong>SSAFY 특화 프로젝트 · D105팀</strong></div>
-                  <div><small>STACK</small><strong>React Native · Expo · TypeScript · Expo Router · Reanimated · Spring Boot · K-Means · EAS Build</strong></div>
-                </div>
-                <div className="dodam-links" aria-label="프로젝트 외부 링크">
-                  <button type="button" disabled>Figma · 추후 연결</button>
-                  <button type="button" disabled>Git · 추후 연결</button>
-                  <button type="button" disabled>Demo · 추후 연결</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="dodam-hero-visual">
-            <span className="dodam-visual-label">MOBILE FINANCIAL COACH</span>
-            <img src="/images/projects/dodam/dodam-cover.jpg" alt="도담 프로젝트 대표 화면" />
-            <p><b>01</b> 흩어진 금융 정보를 다음 행동으로 잇습니다.</p>
-          </div>
-        </div>
-      </section>
+    <article className="dodam-page detail-project">
+      <ProjectDetailHero project="dodam" />
 
       <nav className="dodam-section-nav" aria-label="도담 상세 페이지 목차">
         <button type="button" onClick={() => scrollToSection('dodam-overview')}>Situation</button>
@@ -72,6 +42,7 @@ function DodamPage() {
         <button type="button" onClick={() => scrollToSection('dodam-troubleshooting')}>Troubleshooting</button>
         <button type="button" onClick={() => scrollToSection('dodam-retrospective')}>Result</button>
       </nav>
+      <ProjectVisualStory project="dodam" />
 
       <div className="dodam-content">
         <section className="dodam-section dodam-overview" id="dodam-overview">

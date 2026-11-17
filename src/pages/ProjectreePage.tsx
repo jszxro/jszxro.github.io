@@ -1,4 +1,5 @@
 import './ProjectreePage.css'
+import { ProjectDetailHero, ProjectVisualStory } from './ProjectDetailVisual'
 
 const flow = [
   ['01', 'CREATE', '프로젝트를 만들고 팀원을 초대합니다.'],
@@ -27,25 +28,9 @@ function scrollToSection(id: string) {
 
 function ProjectreePage() {
   return (
-    <article className="projectree-page">
-      <section className="projectree-hero">
-        <div className="projectree-container">
-          <a className="projectree-back" href="#projects">← Projects</a>
-          <div className="projectree-hero-grid">
-            <div><p className="projectree-kicker">COLLABORATION PROJECT · WEB</p><h1>Projectree<span>프로젝트리</span></h1><p className="projectree-summary">회의에서 흩어지는 아이디어를 구조화하고,<br />기록과 피드백이 다음 협업으로 이어지게 하는 프로젝트 서비스</p></div>
-            <div className="projectree-properties">
-              <dl>
-                <div><dt>PERIOD</dt><dd>2026.07 — 2026.08</dd></div>
-                <div><dt>ROLE</dt><dd>Frontend · UX Flow · API Integration</dd></div>
-                <div><dt>TEAM</dt><dd>SSAFY 프로젝트 · D205팀</dd></div>
-                <div><dt>STACK</dt><dd>React · TypeScript · Vite · Zustand · React Router · CSS Modules · SSE</dd></div>
-              </dl>
-              <div className="projectree-links"><button type="button" disabled>Git · 추후 연결</button><button type="button" disabled>Demo · 추후 연결</button></div>
-            </div>
-          </div>
-          <figure className="projectree-cover"><img src="/images/projects/projectree/projectree-cover.png" alt="Projectree 프로젝트 대표 화면" /><figcaption><b>01</b><span>말로 끝나던 아이디어를 프로젝트의 기록으로 연결합니다.</span></figcaption></figure>
-        </div>
-      </section>
+    <article className="projectree-page detail-project">
+      <ProjectDetailHero project="projectree" />
+
       <nav className="projectree-section-nav" aria-label="Projectree 상세 페이지 목차">
         <button type="button" onClick={() => scrollToSection('projectree-situation')}>Situation</button>
         <button type="button" onClick={() => scrollToSection('projectree-task')}>Task</button>
@@ -54,6 +39,7 @@ function ProjectreePage() {
         <button type="button" onClick={() => scrollToSection('projectree-troubleshooting')}>Troubleshooting</button>
         <button type="button" onClick={() => scrollToSection('projectree-result')}>Result</button>
       </nav>
+      <ProjectVisualStory project="projectree" />
       <div className="projectree-container">
         <section className="projectree-section" id="projectree-situation">
           <header className="projectree-heading"><p>01 · SITUATION</p><h2>회의는 끝났지만,<br />아이디어는 다음으로 이어지지 않았습니다.</h2></header>
@@ -79,7 +65,7 @@ function ProjectreePage() {
           <div className="projectree-contribution-list">
             {contributions.map(([label, title, description]) => <article key={label}><span>{label}</span><h3>{title}</h3><p>{description}</p></article>)}
           </div>
-          <div className="projectree-stack"><b>MY STACK</b><p>React · TypeScript · Vite · Zustand · React Router · CSS Modules · SSE</p><b>SERVICE STACK</b><p>LiveKit · Three.js · React Three Fiber · Spring Boot</p></div>
+
         </section>
 
         <section className="projectree-section" id="projectree-decisions">
