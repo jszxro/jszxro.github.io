@@ -184,7 +184,7 @@ function SangchuPage() {
             <article><span>03</span><strong>데이터를 행동으로 바꾸는 경험</strong><p>분석, 지역 탐색, 매물 비교, 월세 예측을 하나의 흐름으로 묶어 데이터가 다음 선택으로 이어지도록 했습니다.</p></article>
           </div>
           <p className="sangchu-reflection">상추에서는 데이터를 분석하는 것과 사용자가 그 결과를 이해하는 것 사이에 별도의 설계가 필요하다는 점을 배웠습니다. 특히 원본 데이터나 모델 출력을 그대로 보여주기보다 화면이 필요로 하는 구조와 사용자가 이해할 수 있는 입력으로 바꿔야 비로소 서비스의 기능이 된다는 것을 경험했습니다. 이후에도 기술을 먼저 드러내기보다 사용자가 어떤 판단을 내려야 하는지에서 출발해 데이터와 화면의 연결 방식을 설계하겠습니다.</p>
-          <div className="sangchu-actions"><a href="#projects">프로젝트 목록으로</a><a href="#/projects/anbam">← 안밤 프로젝트 보기</a></div>
+          <div className="sangchu-actions"><a href="#projects">프로젝트 목록으로</a><a href="#/projects/dit">← Dit 프로젝트 보기</a></div>
         </section>
       </div>
     </article>
